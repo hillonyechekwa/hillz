@@ -1,0 +1,25 @@
+{
+  "name": "dangerous-doppler",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.1.1",
+    "@barba/core": "^2.9.7",
+    "@studio-freight/lenis": "^1.0.42",
+    "@types/react": "^18.2.74",
+    "@types/react-dom": "^18.2.24",
+    "astro": "^4.5.16",
+    "gsap": "^3.12.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.74.1",
+    "split-type": "^0.3.4"
+  }
+}
