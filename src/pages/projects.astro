@@ -1,0 +1,62 @@
+---
+import Layout from  "../../public/Layout.astro";
+import {getCollection} from "astro:content"
+import ProjectList from "../components/ProjectList.astro"
+const projects = await getCollection("projects")
+---
+<Layout title="Hill | Projects">"
+<main class="project-main">
+    <header class="projects-hero">
+        <h1>
+            <span>All</span>
+            <span>Projects</span>
+        </h1>
+        <p>
+            Here are a few of my best projects that show case how I use the technologies in my tech stack to solve problems around my life and things that interest me.
+        </p>
+    </header>
+    <section class="project-list">
+        <ProjectList projects={projects}/>
+    </section>
+</main>
+
+<style>
+    
+.projects-hero{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow-x: hidden;
+    background-color: var(--bg);
+    color: var(--primary-text);
+
+
+    h1{
+        font-family: var(--gopher);
+        font-weight: 700;
+        font-size: 5.5em;
+        span{
+            display: block;
+        }
+    }
+
+    p{
+        font-family: var(--gotham);
+        font-size: 1.3em;
+        font-weight: 600;
+        inline-size: 500px;
+        word-wrap: break-word;
+    }
+}
+ 
+.project-list{
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    display: grid;
+    place-items: center;
+}
+</style>
+</Layout>

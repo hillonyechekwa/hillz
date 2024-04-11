@@ -1,0 +1,113 @@
+---
+import {getCollection, type CollectionEntry} from  "astro:content";
+import Layout from "../../../public/Layout.astro"
+import {Image} from "astro:assets";
+import type { GetStaticPaths } from "astro";
+export const getStaticPaths = async () => {
+    const projects = await getCollection("projects");
+
+
+    const paths = projects.map( project => {
+        return {
+            params: {
+                slug: project.slug
+            },
+            props: {
+                project
+            }
+        }
+    })
+
+    return paths
+}
+
+type Props = {
+    project: CollectionEntry<"projects">
+}
+
+const {project} = Astro.props;
+const {Content} = await project.render()
+
+---
+
+
+<Layout title={`Hill | ${project.data.title}`} >
+        <header class="p-header">
+            <h1 class="p-title">{project.data.title}</h1>
+            <h4 class="p-summary">{project.data.summary}</h4>
+
+            <nav class="p-tech-nav">
+                {project.data.tech.map( t => {
+                    return(
+                        <p>{t}</p>
+                    )
+                })}
+            </nav>
+        </header>
+        <main class="p-body">
+            <Content />
+        </main>
+        <style>
+            .p-header{
+                width: 100%;
+                height: 70vh;
+                padding: 10px;
+
+                h1.p-title{
+                    font-family: var(--gopher);
+                    font-size: 6rem;
+                    font-weight: 700;
+                    color: var(--base);
+                    position: relative;
+                    top: 20%;
+                }
+
+                h4.p-summary{
+                    font-family: var(--gopher);
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: var(--primary-text);
+                    inline-size: 350px;
+                    position: relative;
+                    /* left: 30%; */
+                    top: 30%;
+                }
+
+                nav.p-tech-nav{
+                    width: 150px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    row-gap: 10px;
+                    padding: 10px;
+                    position: relative;
+                    left: 70%;
+                    top: -10%;
+
+                    p{
+                        font-family: var(--gotham);
+                        color: var(--primary-text);
+                        font-size: .8rem;
+                        text-transform: capitalize;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .p-body{
+                padding: 10px;
+                h1,h2{
+                    font-family: var(--gopher);
+                    font-size: 2.5rem;
+                    color: var(--primary-text);
+                }
+
+                p{
+                    font-family: var(--gotham);
+                    font-size: .95rem;
+                    color: var(--primary-text);
+                }
+            }
+        </style>
+</Layout>

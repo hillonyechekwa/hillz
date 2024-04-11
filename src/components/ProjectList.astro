@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Project from "./Project.astro"
+type Props = {
+    projects: CollectionEntry<"project">[];
+}
+
+const {projects} = Astro.props
+---
+
+<section class="project-list">
+    {projects.map((project) => <Project project={project} />)}
+</section>
+
+<style>
+    .project-list{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>

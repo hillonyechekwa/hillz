@@ -1,0 +1,56 @@
+---
+import Layout from "../../public/Layout.astro"
+import {getCollection} from "astro:content"
+import PostList from "../components/PostList.astro"
+const posts = await getCollection("posts")
+---
+
+
+
+<Layout title="Hill | Blog">
+    <header class="blog-header">
+        <h2>
+            <span>Hill's</span>
+            <span>Blog</span>
+        </h2>
+        <p>
+            I write about all the things I am interested in when it comes to software engineering. Here are some of my greatest hits.
+        </p>
+
+    </header>
+    <section class="blog-post-list">
+        <PostList posts={posts}/>
+    </section>
+
+<style>
+    .blog-header{
+        width: 100%;
+        height: 100dvh;
+        background-color: var(--bg);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        h2{
+            font-size: 8rem;
+            font-family: var(--gopher);
+            color: var(--primary-text);
+            span{
+                display: block;
+            }
+        }
+        p{
+            font-size: .85rem;
+            font-family: var(--gopher);
+            inline-size: 300px;
+            color: var(--primary-text);
+        }
+    }
+
+    .blog-post-list{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+    }
+</style>
+</Layout>

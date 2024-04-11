@@ -1,0 +1,169 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+import Nav from '../src/components/Nav.tsx'
+import Footer from '../src/components/Footer.tsx'
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+        <meta name="description"
+        content="I am a fullstack web engineer that builds web sites and applications to solve business problems using the beauty of programming logic in combination with modern technological solutions, tools and techniques">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" />
+        <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png"/>
+        <link rel="apple-touch-icon" href="/favicons/android-chrome-192x192.png"/>
+        <link rel="stylesheet" href="../syntax-highlight/prism-shades-of-purple.css"/>
+		<meta name="generator" content={Astro.generator} />
+		<meta title={title} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Nav client:only/>
+		<slot />
+		<Footer />
+	</body>
+</html>
+<style is:global>
+
+	
+:root{
+	--gotham: 'Gotham', sans-serif;
+	--gopher: 'Gopher', sans-serif;
+	--league: 'League Gothic', sans-serif;
+
+
+    --light-bg: #fdfdff;
+    --light-base: #8F00FF;
+    --light-primary-text: #1A1110;
+    --light-secondary-text: #d6bfff;
+    --light-accent-color: #3f00b3;
+    --light-surface-color: var(--platinum);
+    --light-btn-color:  var(--light-accent-color);
+    --light-btn-text: var(--light-primary-text);
+    --light-link-color: #ad80ff;
+    --magnolia: #F8F4FF;
+    --platinum: #E5E4E2;
+    --light-arrow: url("./icons/arrow-right-white-solid.svg");
+
+
+    --dark-bg: #191815;
+    --dark-base: var(--light-base);
+    --dark-primary-text: var(--light-bg);
+    --dark-secondary-text: #bbbbbb;
+    --dark-accent-color: var(--light-accent-color);
+    --dark-surface-color: #130e09;
+    --dark-btn-color: var(--dark-base);
+    --dark-btn-text: var(--dark-bg);
+    --dark-link-color: #9fa8da;
+    --dark-arrow: url("./icons/arrow-right-dark-solid.svg");
+    --overlay-state: 'hidden';
+}
+
+
+@media(prefers-color-scheme: dark){
+    :root{
+        --bg: var(--dark-bg);
+        --base: var(--dark-base);
+        --primary-text: var(--dark-primary-text);
+        --secondary-text: var(--dark-secondary-text);
+        --accent-color: var(--dark-accent-color);
+        --surface: var(--dark-surface-color);
+        --btn-color: var(--dark-btn-color);
+        --btn-text: var(--dark-btn-text);
+        --link-color: var(--dark-link-color);
+        --btn-arrow: var(--dark-arrow);
+    }
+}
+
+@media(prefers-color-scheme: light){
+    :root{
+        --bg: var(--light-bg);
+        --base: var(--light-base);
+        --primary-text: var(--light-primary-text);
+        --secondary-text: var(--light-secondary-text);
+        --accent-color: var(--light-accent-color);
+        --btn-color: var(--light-btn-color);
+        --surface: var(--light-surface-color);
+        --btn-text: var(--light-btn-text);
+        --link-color: var(--light-link-color);
+        --btn-arrow: var(--light-arrow);
+    }
+}
+
+
+[color-scheme = "dark"]{
+    --bg: var(--dark-bg);
+    --base: var(--dark-base);
+    --primary-text: var(--dark-primary-text);
+    --secondary-text: var(--dark-secondary-text);
+    --accent-color: var(--dark-accent-color);
+    --surface: var(--dark-surface-color);
+    --btn-color: var(--dark-btn-color);
+    --btn-text: var(--dark-btn-text);
+    --link-color: var(--dark-link-color);
+    --btn-arrow: var(--dark-arrow);
+}
+
+[color-scheme = "light"] {
+    --bg: var(--light-bg);
+    --base: var(--light-base);
+    --primary-text: var(--light-primary-text);
+    --secondary-text: var(--light-secondary-text);
+    --accent-color: var(--light-accent-color);
+    --btn-color: var(--light-btn-color);
+    --surface: var(--light-surface-color);
+    --btn-text: var(--light-btn-text);
+    --link-color: var(--light-link-color);
+    --btn-arrow: var(--light-arrow);
+}
+
+@font-face {
+    font-family: 'Gopher';
+    src: url('/fonts/GopherText-Regular.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gopher';
+    src: url('/fonts/GopherText-Bold.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face{
+    font-family: 'League Gothic';
+    src: url('/fonts/leaguegothic-regular-webfont.woff2') format('woff2');
+    font-display: swap;
+}
+
+*,*:before,*:after{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    text-rendering: optimizeLegibility;
+    --webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    background-color: var(--bg);
+}
+
+
+ul{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+</style>

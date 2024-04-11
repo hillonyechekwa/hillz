@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Post from "./Post.astro"
+type Props = {
+    posts: CollectionEntry<"posts">[];
+}
+
+const {posts} = Astro.props
+---
+
+<section class="post-list">
+    {posts.map((post) => <Post post={post} />)}
+</section>
+
+<style>
+    .post-list{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        justify-content: space-evenly;
+        align-items: center;
+    }
+</style>
