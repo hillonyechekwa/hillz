@@ -1,16 +1,23 @@
 import LightOn from "/light-on.mp3"
 import LightOff from "/light-off.mp3"
 import Style from './nav.module.css';
-import {useState} from "react";
+import {useState, useRef} from "react";
 import useMediaQuery from "@util/useMediaQuery";
+import gsap from 'gsap'
+import {useGSAP} from "@gsap/react"
 
 
 export default function Nav() {
     const [toggled, setToggled] = useState(false)
-    console.log(toggled)
     const matches = useMediaQuery("(min-width: 600px)")
 
-    
+    const hamburger = useRef()
+    const navContainer = useRef()
+
+
+    useGSAP(() => {
+        
+    }, [])
 
     return (
         <nav className={Style.navigation}>
@@ -62,6 +69,7 @@ export default function Nav() {
             <button 
              onClick={() => setToggled((prevToggle) => !prevToggle)} 
              className={Style.hamburger}
+             ref={hamburger}
             >
                 <div className={Style.topBar}></div>
                 <div className={Style.bottomBar}></div>
@@ -69,7 +77,7 @@ export default function Nav() {
         )}
     
         {toggled && !matches && (
-             <ul className={Style.navMobileContainerFlex}>
+             <ul className={Style.navMobileContainerFlex} ref={navContainer}>
                 <li className="Style.mobileNavItem">
                     <a href="/">home</a>
                     {/* <span className={Style.navDivider}></span> */}

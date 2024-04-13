@@ -4,8 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import Nav from '../src/components/Nav.tsx'
-import Footer from '../src/components/Footer.tsx'
+import Nav from '../components/Nav.tsx'
+import Footer from '../components/Footer.tsx'
 ---
 
 <!doctype html>
@@ -25,7 +25,7 @@ import Footer from '../src/components/Footer.tsx'
 		<title>{title}</title>
 	</head>
 	<body>
-		<Nav client:only/>
+		<Nav client:load/>
 		<slot />
 		<Footer />
 	</body>

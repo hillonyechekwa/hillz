@@ -1,4 +1,5 @@
 import Style from './footer.module.css';
+import Button from "./Button";
 
 export default function footer() {
 
@@ -7,7 +8,7 @@ export default function footer() {
         <footer>
             <h3>Let's build something together.</h3>
 
-            <button id={Style.footerCta}>Contact Me</button>
+            <Button btnType="accent" content="Contact Me" url="./contact" />
 
             <h2><span>Hillary</span><span> Onyechekwa</span></h2>
             <nav>

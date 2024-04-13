@@ -1,5 +1,5 @@
 ---
-import Layout from "../../public/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Hill | About">
@@ -236,6 +236,59 @@ section#skills{
         img{
             width: 50px;
             margin-bottom: 10px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px){
+    #about-hero{
+        flex-direction: column;
+        align-items: center;
+
+        h1{
+            font-size: 3rem;
+        }
+
+        img{
+            width: 150px;
+            height: 200px;
+        }
+    }
+
+    #about-content section{
+        flex-direction: column;
+
+        p{
+            font-size: .9rem;
+            inline-size: 350px;
+            line-height: 1.4rem;
+        }
+    }
+
+    section#skills{
+
+
+        h3{
+            font-size:1.5rem;
+        }
+
+        p{
+            font-size: .9em;
+            line-height: 1.3rem;
+            left: 10%;
+            inline-size: 300px;
+        }
+
+        #skills-grid{
+            width: 100%;
+
+            h4{
+                font-size: .8rem;
+            }
+
+            img{
+                width: 30px;
+            }
         }
     }
 }
