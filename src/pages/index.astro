@@ -6,7 +6,7 @@ import ProjectList from "../components/ProjectList.astro"
 const projects = await getCollection("projects");
 ---
 
-<Layout title="Hill | Home" >
+<Layout title="Hill | Home">
     <main class="home-container">
         <header class="home-hero">
             <article id="first-col">
@@ -73,7 +73,7 @@ const projects = await getCollection("projects");
                     <ProjectList projects={projects}/>
             </section>
         </main>
-
+    </main>
         <style>
             .home-hero {
                 width: 100%;
@@ -295,5 +295,4 @@ const projects = await getCollection("projects");
 
             @media screen and (min-width: 800px){}
         </style>
-    </main>
 </Layout>
