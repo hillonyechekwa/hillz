@@ -84,6 +84,7 @@
 
 
 .navigation .theme-switch{
+	width: 60px;
 	background: none;
 	display: grid;
 	place-items: center;
