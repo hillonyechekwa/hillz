@@ -1,5 +1,5 @@
 ---
-import Layout from  "../../public/Layout.astro";
+import Layout from  "../layouts/Layout.astro";
 import {getCollection} from "astro:content"
 import ProjectList from "../components/ProjectList.astro"
 const projects = await getCollection("projects")
@@ -28,6 +28,7 @@ const projects = await getCollection("projects")
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
     overflow-x: hidden;
     background-color: var(--bg);
     color: var(--primary-text);
@@ -57,6 +58,28 @@ const projects = await getCollection("projects")
     padding: 10px;
     display: grid;
     place-items: center;
+}
+
+@media screen and (max-width: 600px){
+    .projects-hero{
+        /* flex-direction: column; */
+
+        h1{
+            /* font-size: 2.9rem; */
+        }
+
+        p{
+            font-size: .9em;
+            inline-size: 300px;
+            line-height: 1.4rem;
+            position: relative;
+            top: -50px;
+        }
+    }
+
+    .project-list{
+        padding-left: 30px;
+    }
 }
 </style>
 </Layout>

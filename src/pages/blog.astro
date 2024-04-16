@@ -1,5 +1,5 @@
 ---
-import Layout from "../../public/Layout.astro"
+import Layout from "../layouts/Layout.astro"
 import {getCollection} from "astro:content"
 import PostList from "../components/PostList.astro"
 const posts = await getCollection("posts")
@@ -28,6 +28,7 @@ const posts = await getCollection("posts")
         height: 100dvh;
         background-color: var(--bg);
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
 
@@ -51,6 +52,17 @@ const posts = await getCollection("posts")
         width: 100%;
         height: auto;
         padding: 10px;
+    }
+
+    @media screen and (max-width: 600px){
+        .blog-header p{
+            position: relative;
+            top: -50px;
+        }
+
+        .blog-post-list{
+            padding-left: 20%;
+        }
     }
 </style>
 </Layout>

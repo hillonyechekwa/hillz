@@ -13,7 +13,7 @@
 	transition: top 500ms ease-in-out;
 	z-index: 3;
 
-    #logoWrapper{
+    #logo-wrapper{
 		padding: 10px;
 		border: none;
 		border-radius: 50%;
@@ -21,7 +21,7 @@
 		cursor: pointer;
 	}
 
-    .navContainerFlex{
+    .nav-container-flex{
 		width: 500px; 
 		display: flex;
 		justify-content: space-between;
@@ -74,32 +74,27 @@
 	width: 30px;
 }
 
-.scrollUp{
+.scroll-up{
 	top: 0;
 }
 
-.scrollDown{
+.scroll-down{
 	top:  -100%;
 }
 
 
-.navigation .themeSwitch{
+.navigation .theme-switch{
+	width: 60px;
 	background: none;
 	display: grid;
 	place-items: center;
 	position: relative;
-	left: 20%;
+	left: 30%;
 	border-radius: 50%;
 	border: none;
 	outline: none;
 	cursor: pointer;
 }
-
-
-
-/* .navDivider{
-    display: hidden;
-} */
 
 
 .hamburger{
@@ -111,10 +106,10 @@
 	left: 70%;
 	cursor: pointer;
 	outline: none;
-	z-index: 50;
+	z-index: 30;
 
 
-		& .topBar, & .bottomBar{
+		& .top-bar, & .bottom-bar{
 				position: absolute;
 				width: 100%;
 				height: 3px;
@@ -122,18 +117,18 @@
 				/* z-index: 100; */
 		}
 
-		& .topBar{
+		& .top-bar{
 				top: 5px; left: 0;
 		}
 
-		& .bottomBar{
+		& .bottom-bar{
 				top: 15px; left: 0;
 		}
 
 }
 
 
-.navMobileContainerFlex{
+.nav-mobile-container-flex{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -144,7 +139,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-evenly;
-	transform-origin: top center;
+	transform-origin: top center right;
 	z-index: 20;
 
 	li{

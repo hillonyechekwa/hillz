@@ -6,9 +6,7 @@ footer{
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
-    /* // padding-top: 20px; */
     position: relative;
-    /* // top: 100px; */
     background-color: var(--bg);
 
     h3{
@@ -35,38 +33,7 @@ footer{
         display: block;
 
     }
-
-    button{
-        width: 250px;
-        padding: 15px;
-        border-radius: 25px;
-        font-family: vars(--gopher);
-        text-transform: capitalize;
-        font-weight: 600;
-        font-size: 1.2em;
-        color: var(--base);
-        position: relative;
-        border: 2px solid var(--base);
-        background: none;
-        position: relative;
-        cursor: pointer;
-
-        &:after{
-            content: var(--btn-arrow);
-            display: block;
-            width: 50px;
-            height: 50px;
-            background-color: var(--base);
-            border-radius: 50%;
-            border: 2px solid var(--base);
-            position: absolute;
-            top: 0;
-            left: 280px;
-            padding: 13px;
-        }
-    }
 }
-
 
 
 footer nav{
@@ -98,4 +65,28 @@ footer nav{
         }
     }
     
+}
+
+
+@media screen and (max-width: 600px){
+    footer h3{
+        font-size: 1.3em;
+    }
+
+    footer h2{
+        font-size: 4rem;
+    }
+
+    footer nav{
+        width: 200px;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 25px;
+        ul{
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+        }
+    }   
 }

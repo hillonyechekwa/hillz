@@ -1,5 +1,5 @@
 ---
-import Layout from "../../public/Layout.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Hill | Teaching">
@@ -79,6 +79,21 @@ import Layout from "../../public/Layout.astro";
                     justify-content: flex-end;
                     align-items: center;
                 }
+            }
+        }
+
+        @media screen and (max-width: 600px){
+            .teaching-hero{
+
+                img{
+                    width: 400px;
+                }
+            }
+
+            #teaching-content section p{
+                font-size: .9rem;
+                inline-size: 300px;
+                line-height: 1.4rem;
             }
         }
     </style>
