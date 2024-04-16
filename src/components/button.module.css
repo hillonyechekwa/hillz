@@ -10,7 +10,7 @@
     left: 230px;
     border: none;
     border: 2px solid var(--base);
-    background-color: var(--btn-color);
+    background-color: var(--base);
     cursor: pointer;
 
     a {

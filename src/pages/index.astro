@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "@components/Button.tsx";
-import {getCollection} from "astro:content"
-import ProjectList from "../components/ProjectList.astro"
+import { getCollection } from "astro:content";
+import ProjectList from "../components/ProjectList.astro";
 const projects = await getCollection("projects");
 ---
 
@@ -32,7 +32,11 @@ const projects = await getCollection("projects");
                     my environment.
                 </p>
 
-                <Button btnType="primary" content="See My Projects" url="./projects" />
+                <Button
+                    btnType="primary"
+                    content="See My Projects"
+                    url="./projects"
+                />
             </article>
 
             <h1>
@@ -68,231 +72,259 @@ const projects = await getCollection("projects");
             </section>
             <section id="index-projects">
                 <h2>Projects</h2>
-                <p>Here's a list of some of my projects.<p>
-                    <!-- add project Card component here. -->
-                    <ProjectList projects={projects}/>
+                <p>
+                    Here's a list of some of my projects.<p>
+                        <!-- add project Card component here. -->
+                        <ProjectList projects={projects} />
+                    </p>
+                </p>
             </section>
-        </main>
-    </main>
-        <style>
-            .home-hero {
-                width: 100%;
-                height: 100dvh;
-                /* grid */
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, 1fr);
-                justify-content: space-evenly;
-                align-items: center;
+            <style>
+                .home-hero {
+                    width: 100%;
+                    height: 100dvh;
+                    /* grid */
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    grid-template-rows: repeat(2, 1fr);
+                    justify-content: space-evenly;
+                    align-items: center;
 
-                font-family: var(--gopher);
-                color: var(--primary-text);
-                background-color: var(--bg);
+                    font-family: var(--gopher);
+                    color: var(--primary-text);
+                    background-color: var(--bg);
 
-                article#first-col {
-                    padding: 5px 30px;
-                }
-
-                article#first-col h3 {
-                    /* display: block; */
-                    position: relative;
-                    top: 30px;
-
-                    span {
-                        display: block;
-                        font-family: var(--gotham);
-                        text-transform: capitalize;
-                        font-size: 1.7em;
+                    article#first-col {
+                        padding: 5px 30px;
                     }
 
-                    small span {
-                        display: inline-block;
-                        font-size: 0.7em;
-                        font-family: var(--gotham);
-                        font-weight: 400;
-                        color: var(--primary-text);
-                    }
-                }
-
-                h1 {
-                    grid-area: 2/1/3/3;
-                    justify-self: center;
-                    font-size: 8em;
-                    font-weight: 800;
-
-                    span {
-                        font-family: var(--gopher);
-                        display: block;
-                        text-align: center;
-                        text-transform: capitalize;
+                    article#first-col h3 {
+                        /* display: block; */
                         position: relative;
+                        top: 30px;
 
-                        &:nth-child(2) {
+                        span {
+                            display: block;
+                            font-family: var(--gotham);
+                            text-transform: capitalize;
+                            font-size: 1.7em;
+                        }
+
+                        small span {
+                            display: inline-block;
+                            font-size: 0.7em;
+                            font-family: var(--gotham);
+                            font-weight: 400;
+                            color: var(--primary-text);
+                        }
+                    }
+
+                    h1 {
+                        grid-area: 2/1/3/3;
+                        justify-self: center;
+                        font-size: 8em;
+                        font-weight: 800;
+
+                        span {
+                            font-family: var(--gopher);
+                            display: block;
+                            text-align: center;
+                            text-transform: capitalize;
                             position: relative;
-                            top: -30px;
+
+                            &:nth-child(2) {
+                                position: relative;
+                                top: -30px;
+                            }
                         }
                     }
                 }
-            }
 
-            article#first-col h3:nth-child(2) {
-                position: relative;
-                top: 7rem;
-            }
-
-            article#second-col {
-                p {
-                    display: block;
+                article#first-col h3:nth-child(2) {
                     position: relative;
-                    top: 40px;
-                    font-size: 1.25rem;
-                    line-height: 1.3em;
-                    word-wrap: break-word;
-                    inline-size: 450px;
+                    top: 7rem;
                 }
 
-            }
+                article#second-col {
+                    p {
+                        display: block;
+                        position: relative;
+                        top: 40px;
+                        font-size: 1.25rem;
+                        line-height: 1.3em;
+                        word-wrap: break-word;
+                        inline-size: 450px;
+                    }
+                }
 
-            .index-main {
-                width: 100%;
-            }
+                .index-main {
+                    width: 100%;
+                }
 
-            section.index-main {
-                position: relative;
-                z-index: 2;
-            }
+                section.index-main {
+                    position: relative;
+                    z-index: 2;
+                }
 
-            section#main-inner__wrapper {
-                border-radius: 25px;
-            }
+                section#main-inner__wrapper {
+                    border-radius: 25px;
+                }
 
-            section#about {
-                width: 100%;
-                height: 100dvh;
-                display: flex;
-                justify-content: space-evenly;
-                align-items: center;
-                background-color: var(--base);
+                section#about {
+                    width: 100%;
+                    height: 100dvh;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    background-color: var(--base);
 
-                article {
+                    article {
+                        display: flex;
+                        flex-direction: column;
+
+                        h3 {
+                            text-transform: capitalize;
+                            font-size: 2.7em;
+                            font-family: var(--gopher);
+                            text-align: center;
+                            position: relative;
+                            color: var(--primary-text);
+                        }
+                    }
+                    p {
+                        font-family: var(--gopher);
+                        font-size: 1.24rem;
+                        font-weight: 400;
+                        inline-size: 450px;
+                        line-height: 1.65rem;
+                        color: var(--secondary-text);
+
+                        strong {
+                            color: var(--primary-text);
+                        }
+                    }
+                }
+
+                section#index-projects {
+                    width: 100%;
+                    height: 100dvh;
+                    padding-top: 50px;
                     display: flex;
                     flex-direction: column;
-
-                    h3 {
-                        text-transform: capitalize;
-                        font-size: 2.7em;
-                        font-family: var(--gopher);
-                        text-align: center;
-                        position: relative;
-                        color: var(--primary-text);
-                    }
-                }
-                p {
-                    font-family: var(--gopher);
-                    font-size: 1.24rem;
-                    font-weight: 400;
-                    inline-size: 450px;
-                    line-height: 1.65rem;
-                    color: var(--secondary-text);
-
-                    strong {
-                        color: var(--primary-text);
-                    }
-                }
-            }
-
-            section#index-projects {
-                width: 100%;
-                height: 100dvh;
-                padding-top: 50px;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                
-
-                h2 {
-                    font-family: var(--gopher);
-                    font-size: 2.6rem;
-                    margin-left: 30px;
-                    color: var(--primary-text);
-                }
-
-                > p {
-                    margin-left: 30px;
-                    font-family: var(--gopher);
-                    font-size: 1.3rem;
-                    color: var(--primary-text);
-                }
-
-                .project-list{
-                    display: flex;
-                    /* flex-direction: column; */
                     justify-content: space-between;
                     align-items: center;
-                    overflow-x: hidden;
-                }
 
-            }
+                    h2 {
+                        font-family: var(--gopher);
+                        font-size: 2.6rem;
+                        margin-left: 30px;
+                        color: var(--primary-text);
+                    }
 
-            @media screen and (max-width: 600px){
-               .home-hero{
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 1fr);
-
-                article#first-col h3{
-                    
-                    span{
+                    > p {
+                        margin-left: 30px;
+                        font-family: var(--gopher);
                         font-size: 1.3rem;
+                        color: var(--primary-text);
                     }
-                    
-                }
 
-                h1{
-                    font-size: 3.4em;
-
-                    grid-area: 3 / 1 / 4 / 1;
-
-                    position: relative;
-                    top: 85px;
-                    span{
-                        margin-bottom: 15px;
+                    .project-list {
+                        display: flex;
+                        /* flex-direction: column; */
+                        justify-content: space-between;
+                        align-items: center;
+                        overflow-x: hidden;
                     }
                 }
 
-                article#first-col h3:nth-child(2){
-                    top: 2rem;
-                    left: 60%;
-                    width: 100px;
+                @media screen and (max-width: 600px) {
+                    .home-hero {
+                        grid-template-columns: 1fr;
+                        grid-template-rows: repeat(4, 1fr);
+
+                        article#first-col h3 {
+                            span {
+                                font-size: 1.3rem;
+                            }
+                        }
+
+                        h1 {
+                            font-size: 3.4em;
+
+                            grid-area: 3 / 1 / 4 / 1;
+
+                            position: relative;
+                            top: 85px;
+                            span {
+                                margin-bottom: 15px;
+                            }
+                        }
+
+                        article#first-col h3:nth-child(2) {
+                            top: 2rem;
+                            left: 60%;
+                            width: 100px;
+                        }
+
+                        article#second-col {
+                            grid-area: 2 / 1 / 3 / 1;
+                            p {
+                                font-size: 0.85rem;
+                                padding-left: 20px;
+                            }
+                        }
+                    }
+
+                    section#about {
+                        flex-direction: column;
+
+                        p {
+                            font-size: 0.9rem;
+                            line-height: 1.3rem;
+                        }
+                    }
+
+                    section#index-projects {
+                        .project-list {
+                            column-gap: 30px;
+                        }
+                    }
                 }
 
-
-                article#second-col{
-                    grid-area: 2 / 1 / 3 / 1;
-                p{
-                    font-size: .85rem;
-                    padding-left: 20px;
+                @media screen and (min-width: 800px) {
                 }
-            }
-               }
+            </style>
+            <script>
+                import gsap from 'gsap';
+                import Lenis from '@studio-freight/lenis'
 
-               section#about{
-                flex-direction: column;
+                gsap.registerPlugin(ScrollTrigger);
 
-                p{
-                    font-size: .9rem;
-                    line-height: 1.3rem;
+                const tl = gsap.timeline();
+
+                const lenis = new Lenis()
+
+                function raf(time){
+                    lenis.raf(time)
+                    requestAnimationFrame(raf)
                 }
-               }
 
-               section#index-projects{
+                requestAnimationFrame(raf);
 
-                .project-list{
-                    column-gap: 30px;
-                }
-               }
-            }
 
-            @media screen and (min-width: 800px){}
-        </style>
-</Layout>
+                const firstCol = document.querySelector(".first-col");
+                const secondCol = document.querySelector(".second-col");
+                const heading = document.querySelector(".home-hero h1");
+                const button = document.querySelector(".home-hero button");
+
+
+                tl.to(firstCol, {
+                  scrollTrigger : {
+                    trigger: firstCol,
+                    // start: "top   
+                  }
+                })
+            </script>
+        </main>
+    </main></Layout
+>
