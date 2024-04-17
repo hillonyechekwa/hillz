@@ -40,8 +40,8 @@ const projects = await getCollection("projects");
             </article>
 
             <h1>
-                <span>Hillary</span>
-                <span>Onyechekwa</span>
+                <span id="top-heading">Hillary</span>
+                <span id="bottom-heading">Onyechekwa</span>
             </h1>
         </header>
         <main class="index-main">
@@ -295,36 +295,85 @@ const projects = await getCollection("projects");
                 }
             </style>
             <script>
-                import gsap from 'gsap';
-                import Lenis from '@studio-freight/lenis'
+                import {gsap} from "gsap";
+                import { ScrollTrigger } from "gsap/all";
+                import Lenis from "@studio-freight/lenis";
 
                 gsap.registerPlugin(ScrollTrigger);
 
                 const tl = gsap.timeline();
 
-                const lenis = new Lenis()
+                const lenis = new Lenis();
 
-                function raf(time){
-                    lenis.raf(time)
-                    requestAnimationFrame(raf)
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
                 }
 
                 requestAnimationFrame(raf);
 
+                const firstCol = document.querySelector("#first-col");
+                const secondCol = document.querySelector("#second-col p");
+                const topHeading = document.querySelector("#top-heading");
+                const bottomHeading = document.querySelector("#bottom-heading");
+                const heroButton = document.querySelector(".home-hero button");
+                const homeHero = document.querySelector(".home-hero");
 
-                const firstCol = document.querySelector(".first-col");
-                const secondCol = document.querySelector(".second-col");
-                const heading = document.querySelector(".home-hero h1");
-                const button = document.querySelector(".home-hero button");
 
-
-                tl.to(firstCol, {
-                  scrollTrigger : {
-                    trigger: firstCol,
-                    // start: "top   
-                  }
-                })
+                    tl.to(firstCol, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "100px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: -500,
+                        opacity: 0,
+                        ease: "power2.out"
+                    }).to(secondCol, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "40px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 100,
+                        opacity: 0,
+                        ease: "power2.out",
+                        delay: .3
+                    }).to(heroButton, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "120px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 100,
+                        opacity: 0,
+                        ease: "power2.out",
+                        delay: .5
+                    }).to(topHeading, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "200px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: -100,
+                        opacity: 0,
+                        ease: "power2.out"
+                    }).to(bottomHeading, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "200px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 100,
+                        opacity: 0,
+                        ease: "power2.out"
+                    })
             </script>
         </main>
-    </main></Layout
->
+    </main>
+</Layout>
