@@ -6,7 +6,7 @@ import "./nav.css"
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import useMediaQuery from "@util/useMediaQuery";
-import gsap from 'gsap';
+import {gsap} from 'gsap';
 import { useGSAP } from "@gsap/react"
 
 

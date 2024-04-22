@@ -40,8 +40,8 @@ const projects = await getCollection("projects");
             </article>
 
             <h1>
-                <span>Hillary</span>
-                <span>Onyechekwa</span>
+                <span id="top-heading">Hillary</span>
+                <span id="bottom-heading">Onyechekwa</span>
             </h1>
         </header>
         <main class="index-main">
@@ -71,8 +71,8 @@ const projects = await getCollection("projects");
                 </section>
             </section>
             <section id="index-projects">
-                <h2>Projects</h2>
-                <p>
+                <h2 id="ip-heading">Projects</h2>
+                <p id="proj-sec-desc">
                     Here's a list of some of my projects.<p>
                         <!-- add project Card component here. -->
                         <ProjectList projects={projects} />
@@ -177,6 +177,8 @@ const projects = await getCollection("projects");
                     justify-content: space-evenly;
                     align-items: center;
                     background-color: var(--base);
+                    transform: scaleX(0.7);
+                    
 
                     article {
                         display: flex;
@@ -189,6 +191,8 @@ const projects = await getCollection("projects");
                             text-align: center;
                             position: relative;
                             color: var(--primary-text);
+                            opacity: 0;
+                            transform: translateY(-30px);
                         }
                     }
                     p {
@@ -198,7 +202,8 @@ const projects = await getCollection("projects");
                         inline-size: 450px;
                         line-height: 1.65rem;
                         color: var(--secondary-text);
-
+                        opacity: 0;
+                       
                         strong {
                             color: var(--primary-text);
                         }
@@ -214,25 +219,32 @@ const projects = await getCollection("projects");
                     justify-content: space-between;
                     align-items: center;
 
-                    h2 {
+                    #ip-heading{
                         font-family: var(--gopher);
                         font-size: 2.6rem;
                         margin-left: 30px;
                         color: var(--primary-text);
+                        opacity: 0.4;
+                        transform: translateX(-50px);
                     }
 
-                    > p {
+                    > p#proj-sec-desc {
                         margin-left: 30px;
                         font-family: var(--gopher);
                         font-size: 1.3rem;
                         color: var(--primary-text);
+                        opacity: 0.4;
+                        transform: translateX(-40px);
                     }
 
                     .project-list {
+                        width: fit-content;
+                        scroll-behavior: smooth;
                         display: flex;
                         /* flex-direction: column; */
-                        justify-content: space-between;
-                        align-items: center;
+                        /* justify-content: space-between; */
+                        /* align-items: center; */
+                        column-gap: 50px;
                         overflow-x: hidden;
                     }
                 }
@@ -295,36 +307,173 @@ const projects = await getCollection("projects");
                 }
             </style>
             <script>
-                import gsap from 'gsap';
-                import Lenis from '@studio-freight/lenis'
+                import {gsap} from "gsap";
+                import { ScrollTrigger } from "gsap/all";
+                import Lenis from "@studio-freight/lenis";
 
                 gsap.registerPlugin(ScrollTrigger);
 
                 const tl = gsap.timeline();
 
-                const lenis = new Lenis()
+                const lenis = new Lenis();
 
-                function raf(time){
-                    lenis.raf(time)
-                    requestAnimationFrame(raf)
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
                 }
 
                 requestAnimationFrame(raf);
 
+                const firstCol = document.querySelector("#first-col");
+                const secondCol = document.querySelector("#second-col p");
+                const topHeading = document.querySelector("#top-heading");
+                const bottomHeading = document.querySelector("#bottom-heading");
+                const heroButton = document.querySelector(".home-hero button");
+                const homeHero = document.querySelector(".home-hero");
 
-                const firstCol = document.querySelector(".first-col");
-                const secondCol = document.querySelector(".second-col");
-                const heading = document.querySelector(".home-hero h1");
-                const button = document.querySelector(".home-hero button");
+
+                    tl.to(firstCol, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "100px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: -500,
+                        opacity: 0,
+                        ease: "power2.out"
+                    }).to(secondCol, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "40px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 100,
+                        opacity: 0,
+                        ease: "power2.out",
+                        delay: .3
+                    }).to(heroButton, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "120px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 50,
+                        opacity: 0,
+                        ease: "power2.out",
+                        delay: .5
+                    }).to(topHeading, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "200px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: -100,
+                        opacity: 0,
+                        ease: "power2.out"
+                    }).to(bottomHeading, {
+                        scrollTrigger: {
+                            trigger: homeHero,
+                            start: "200px",
+                            end: "bottom",
+                            scrub: true
+                        },
+                        x: 100,
+                        opacity: 0,
+                        ease: "power2.out"
+                    })
+//----------------------about-section-animation-----------------
+                    const aboutContainer = document.querySelector("#about");
+                    const aboutText = document.querySelectorAll("#about p");
+                    const aboutHeading = document.querySelectorAll("#about h3");
 
 
-                tl.to(firstCol, {
-                  scrollTrigger : {
-                    trigger: firstCol,
-                    // start: "top   
-                  }
+                    tl.to(aboutContainer, {
+                        scrollTrigger: {
+                            trigger: aboutContainer,
+                            start: "-180px right",
+                            end: "300px",
+                            scrub: true,
+                           
+                        },
+                        scaleX: 1,
+                        ease: "power2.inOut"
+                    })
+
+                    tl.to(aboutHeading, {
+                            scrollTrigger: {
+                                trigger: aboutContainer,
+                                start: "-25px right",
+                                end: "bottom",
+                                scrub: true,
+                            },
+                            opacity: 1,
+                            y: 0
+                        })
+                    aboutText.forEach((item) => {
+                        tl.to(item, {
+                            scrollTrigger: {
+                                trigger: aboutContainer,
+                                start: "20px right",
+                                end: "bottom",
+                                scrub: true,
+                            },
+                            opacity: 1,
+                            delay: 1.3
+                        })
+                    })
+
+
+ //-------------project-section----------------
+                const projectSection = document.querySelector("#index-projects")
+
+                const projectSectHeading = projectSection.querySelector("h2");
+
+                const projectSlide = projectSection.querySelector(".project-list")
+                    console.log(projectSlide)
+                const projectSlideWidth = projectSlide.offsetWidth
+
+                let amountToScroll = projectSlideWidth - window.innerWidth
+
+                tl.to("#ip-heading", {
+                    scrollTrigger: {
+                        trigger: projectSection,
+                        start: "-10px right",
+                        end: "bottom",
+                        scrub: true,
+                        markers: true
+                    },
+                    opacity: 1,
+                    translateX: 0,
+                    ease: "none"
+                }).to("#proj-sec-desc",{
+                    scrollTrigger: {
+                        trigger: projectSection,
+                        start: "-10px right",
+                        end: "bottom",
+                        scrub: true,
+                        markers: true
+                    },
+                    opacity: 1,
+                    translateX: 0,
+                    ease: "none"
+                }).to(projectSlide, {
+                    x: -amountToScroll,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: projectSection,
+                        start: "top 30px",
+                        end: "+=" + amountToScroll,
+                        pin: true,
+                        scrub: true,
+                        markers: true
+                    }
                 })
+
             </script>
         </main>
-    </main></Layout
->
+    </main>
+</Layout>
