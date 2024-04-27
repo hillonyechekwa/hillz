@@ -310,7 +310,7 @@ const projects = await getCollection("projects");
                 import {gsap} from "gsap";
                 import { ScrollTrigger } from "gsap/all";
                 import Lenis from "@studio-freight/lenis";
-
+                //TODO: refactor this animation code to work in different media queries.
                 gsap.registerPlugin(ScrollTrigger);
 
                 const tl = gsap.timeline();
@@ -444,7 +444,6 @@ const projects = await getCollection("projects");
                         start: "-10px right",
                         end: "bottom",
                         scrub: true,
-                        markers: true
                     },
                     opacity: 1,
                     translateX: 0,
@@ -455,7 +454,6 @@ const projects = await getCollection("projects");
                         start: "-10px right",
                         end: "bottom",
                         scrub: true,
-                        markers: true
                     },
                     opacity: 1,
                     translateX: 0,
@@ -469,7 +467,6 @@ const projects = await getCollection("projects");
                         end: "+=" + amountToScroll,
                         pin: true,
                         scrub: true,
-                        markers: true
                     }
                 })
 

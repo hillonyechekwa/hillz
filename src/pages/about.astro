@@ -3,112 +3,130 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Hill | About">
-    
-<main>
-
-    <header id="about-hero">
-        <h1>
-            <span id="left-about-h-span">About</span>
-            <span id="right-about-h-span"> Hill</span>
-        </h1>
-        <img class="about-images" src="/images/hillz1.jpg" src="a photo of hill" >
-        <img class="about-images" src="/images/profile-img.jpg" src="a photo of hill">
-    
+  <main>
+    <header id="about-hero" class='parallax-sections' data-depth='0.1'>
+      <h1>
+        <span id="left-about-h-span">About</span>
+        <span id="right-about-h-span"> Hill</span>
+      </h1>
+      <img
+        class="about-images"
+        src="/images/hillz1.jpg"
+        src="a photo of hill"
+      />
+      <img
+        class="about-images"
+        src="/images/profile-img.jpg"
+        src="a photo of hill"
+      />
     </header>
     <main id="about-content">
-    <section>
+      <section data-depth='0.5' class='parallax-sections'>
         <p>
-            I'm Hill, a software engineer from Lagos, Nigeria. 
-            I sometimes like to think that programming is how I like to express my creative interests by building functional, user-friendgit pushly and aesthetically appealing applications that solve different problems around me.
+          I'm Hill, a software engineer from Lagos, Nigeria. I sometimes like to
+          think that programming is how I like to express my creative interests
+          by building functional, user-friendgit pushly and aesthetically
+          appealing applications that solve different problems around me.
         </p>
         <p>
-            While I have a diploma in computer science, I still enjoy writing, consuming knowledge about history, art, faith and physics and talking about it in my pass-time.
+          While I have a diploma in computer science, I still enjoy writing,
+          consuming knowledge about history, art, faith and physics and talking
+          about it in my pass-time.
         </p>
-    </section>
-    <section>
+      </section>
+      <section>
         <p>
-            When I'm not building more things into the simulation of our existing space-time continum, I spend tiime in my home city in Lagos, Nigeria with my quite large family and friends. 
+          When I'm not building more things into the simulation of our existing
+          space-time continum, I spend tiime in my home city in Lagos, Nigeria
+          with my quite large family and friends.
         </p>
-        
+
         <p>
-        I first learned how to program by building things for the web, so when I build I tend to turn to JavaScript (or TypeScript these days), React, or if I'm building fullstack applications, GraphQl in the backend.
+          I first learned how to program by building things for the web, so when
+          I build I tend to turn to JavaScript (or TypeScript these days),
+          React, or if I'm building fullstack applications, GraphQl in the
+          backend.
         </p>
-    </section>
-    <section id="last-section">
+      </section>
+      <section id="last-section">
         <p>
-            When I'm not building web applcaitions or interfaces, I tend to tinker in my interest in building software for embedded systems and work towards my aspiration of being an embedded systems engineer/robotics system engineer sometime in the near future.
+          When I'm not building web applcaitions or interfaces, I tend to tinker
+          in my interest in building software for embedded systems and work
+          towards my aspiration of being an embedded systems engineer/robotics
+          system engineer sometime in the near future.
         </p>
-    </section>
+      </section>
     </main>
-      <section id="skills">
-                <h3>Skills.</h3>
-                <p>Most times, I work with Typescript(React and Vue), Graphql and Rust. I take interest in using modern animation tools
-                    and technniques to to bring a more neu-natural and realistic user experience to software especially on
-                    the web.</p>
-                    <section id="skills-grid">
-                        <div>
-                        <hr>
-                            <img src="/images/icons8-html.svg" alt="">
-                            <h4>HTML</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/icons8-css.svg" alt="">
-                            <h4>CSS</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/js.png" alt="">
-                            <h4>JavaScript</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/icons8-typescript.svg" alt="">
-                            <h4>TypeScript</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/icons8-sass.svg" alt="">
-                            <h4>Sass</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/icons8-git.svg" alt="">
-                            <h4>Git</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/react.png" alt="">
-                            <h4>React</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/node-js-logo.png" alt="">
-                            <h4>Node</h4>
-                        </div>
-                        <div>
-                        <hr>
-                            <img src="/images/gql.png" alt="">
-                            <h4>Graphql</h4>
-                        </div>
-                    </section>
-            </section>
-</main>
+    <section id="skills">
+      <h3>Skills.</h3>
+      <p>
+        Most times, I work with Typescript(React and Vue), Graphql and Rust. I
+        take interest in using modern animation tools and technniques to to
+        bring a more neu-natural and realistic user experience to software
+        especially on the web.
+      </p>
+      <section id="skills-grid">
+        <div>
+          <hr />
+          <img src="/images/icons8-html.svg" alt="" />
+          <h4>HTML</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/icons8-css.svg" alt="" />
+          <h4>CSS</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/js.png" alt="" />
+          <h4>JavaScript</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/icons8-typescript.svg" alt="" />
+          <h4>TypeScript</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/icons8-sass.svg" alt="" />
+          <h4>Sass</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/icons8-git.svg" alt="" />
+          <h4>Git</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/react.png" alt="" />
+          <h4>React</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/node-js-logo.png" alt="" />
+          <h4>Node</h4>
+        </div>
+        <div>
+          <hr />
+          <img src="/images/gql.png" alt="" />
+          <h4>Graphql</h4>
+        </div>
+      </section>
+    </section>
+  </main>
 
-<style>
-        
-#about-hero{
-    width: 100%;
-    height: 100dvh;
-    overflow-x: hidden;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: flex-end;
-    background-color: var(--bg);
+  <style>
+    #about-hero {
+      width: 100%;
+      height: 100dvh;
+      overflow-x: hidden;
+      padding: 20px;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-end;
+      background-color: var(--bg);
 
-    
-    h1{
+      h1 {
         font-family: var(--gopher);
         font-size: 8rem;
         color: var(--primary-text);
@@ -118,12 +136,12 @@ import Layout from "../layouts/Layout.astro";
         font-kerning: none;
         margin: 0 auto;
 
-        span{
-            display: inline-block;
+        span {
+          display: inline-block;
         }
-    }
+      }
 
-    img{
+      img {
         width: 250px;
         height: 350px;
         position: relative;
@@ -131,16 +149,15 @@ import Layout from "../layouts/Layout.astro";
         left: 0;
         border-radius: 15px;
         z-index: 1;
+      }
     }
-}
 
+    #about-content {
+      width: 100%;
+      height: auto;
+      background-color: var(--base);
 
-#about-content{
-    width: 100%;
-    height: auto;
-    background-color: var(--base);
-
-    section{
+      section {
         width: 100%;
         height: 60dvh;
         /* padding: 10px; */
@@ -148,54 +165,54 @@ import Layout from "../layouts/Layout.astro";
         justify-content: space-evenly;
         align-items: center;
         margin: 0 auto;
-    
-        p{
-            font-family: var(--gotham);
-            font-size: 1.2em;
-            color: var(--primary-text);
-            inline-size: 400px;
-            justify-self: center;
-            font-weight: 700;
+
+        p {
+          font-family: var(--gotham);
+          font-size: 1.2em;
+          color: var(--primary-text);
+          inline-size: 400px;
+          line-height: 1.8rem;
+          justify-self: center;
+          font-weight: 700;
         }
 
-        &:nth-child(3){
-    
-            p{
-                text-align: left;
-                inline-size: auto;
-                inline-size: 700px;
-                word-break: break-word;
-            }
+        &:nth-child(3) {
+          p {
+            text-align: left;
+            inline-size: auto;
+            inline-size: 700px;
+            word-break: break-word;
+          }
         }
+      }
     }
-}
 
+    section#skills {
+      width: 100%;
+      height: auto;
+      padding: 20px;
 
-section#skills{
-    width: 100%;
-    height: auto;
-    padding: 20px;
-
-    h3{
+      h3 {
         font-family: var(--gopher);
         font-size: 2.3em;
         font-weight: 600;
         text-align: center;
         color: var(--primary-text);
-    }
+      }
 
-    p{
+      p {
         font-family: var(--gopher);
         font-size: 1.5em;
-        inline-size: 500px;
+        inline-size: 600px;
         position: relative;
         left: 30%;
         top: 60px;
+        line-height: 1.8em;
         margin-bottom: 100px;
         color: var(--primary-text);
-    }
+      }
 
-    #skills-grid{
+      #skills-grid {
         width: 50%;
         padding: 20px;
         display: flex;
@@ -205,92 +222,141 @@ section#skills{
         margin: 0 auto;
         position: relative;
         font-family: var(--gopher);
-        
-        div{
+
+        div {
+          width: 100%;
+          padding: 10px;
+          display: flex;
+          padding: 5px;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 5px;
+          position: relative;
+          padding: 10px;
+          margin: 0 auto;
+
+          hr {
             width: 100%;
-            padding: 10px;
-            display: flex;
-            padding: 5px;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 5px;
-            position: relative;
-            padding: 10px;
-            margin: 0 auto;
+            height: 3px;
+            border-color: var(--primary-text);
+            background-color: var(--primary-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
 
-            hr{
-                width: 100%;
-                height: 3px;
-                border-color: var(--primary-text);
-                background-color: var(--primary-text);
-                position: absolute;
-                top: 0;
-                left: 0;
-            }
-
-            h4{
-                font-size:1.3rem;
-                color: var(--primary-text);
-            }
+          h4 {
+            font-size: 1.3rem;
+            color: var(--primary-text);
+          }
         }
-        img{
-            width: 50px;
-            margin-bottom: 10px;
+        img {
+          width: 50px;
+          margin-bottom: 10px;
         }
+      }
     }
-}
 
-@media screen and (max-width: 600px){
-    #about-hero{
+    @media screen and (max-width: 600px) {
+      #about-hero {
         flex-direction: column;
         align-items: center;
 
-        h1{
-            font-size: 3rem;
+        h1 {
+          font-size: 3rem;
         }
 
-        img{
-            width: 150px;
-            height: 200px;
+        img {
+          width: 150px;
+          height: 200px;
         }
-    }
+      }
 
-    #about-content section{
+      #about-content section {
         flex-direction: column;
 
-        p{
-            font-size: .9rem;
-            inline-size: 350px;
-            line-height: 1.4rem;
+        p {
+          font-size: 0.9rem;
+          inline-size: 350px;
+          line-height: 1.4rem;
         }
+      }
+
+      section#skills {
+        h3 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.9em;
+          line-height: 1.3rem;
+          left: 10%;
+          inline-size: 300px;
+        }
+
+        #skills-grid {
+          width: 100%;
+
+          h4 {
+            font-size: 0.8rem;
+          }
+
+          img {
+            width: 30px;
+          }
+        }
+      }
     }
+  </style>
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/all";
+    import Lenis from "@studio-freight/lenis";
 
-    section#skills{
+    gsap.registerPlugin(ScrollTrigger);
 
+    const aboutHero = document.querySelector("#about-hero");
+    const aboutContent = document.querySelector("#about-content");
+    const skills = document.querySelector("#skills");
 
-        h3{
-            font-size:1.5rem;
-        }
+    // about hero styles
+    const tl = gsap.timeline();
 
-        p{
-            font-size: .9em;
-            line-height: 1.3rem;
-            left: 10%;
-            inline-size: 300px;
-        }
-
-        #skills-grid{
-            width: 100%;
-
-            h4{
-                font-size: .8rem;
+    gsap.utils.toArray('#about-hero > h1 > span').forEach((span, index) => {
+        gsap.to(span, {
+            y: index === 0 ? -30 : 30,
+            x: index === 0 ? -100 : 100,
+            opacity: 0,
+            ease: 'power2.inOut',
+            stagger: 0.1,
+            delay: .3,
+            scrollTrigger: {
+                trigger: aboutHero,
+                start: '3px left',
+                end: 'center',
+                scrub: true
             }
+        })
+    })
 
-            img{
-                width: 30px;
+    gsap.utils.toArray('.about-images').forEach((image, index) => {
+        gsap.to(image, {
+            x: index === 0? -80 : 80,
+            opacity: 0,
+            ease: 'power2.inOut',
+            stagger: 0.1,
+            delay: 0.3,
+            scrollTrigger: {
+                trigger: aboutHero,
+                start: '5% left',
+                end: 'center',
+                scrub: true,
+                markers: true,
             }
-        }
-    }
-}
-</style>
+        })
+    })
+
+    
+   
+  </script>
 </Layout>
