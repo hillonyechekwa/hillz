@@ -311,7 +311,7 @@ import Layout from "../layouts/Layout.astro";
   <script>
     import { gsap } from "gsap";
     import { ScrollTrigger } from "gsap/all";
-    import Lenis from "@studio-freight/lenis";
+    import Lenis from "lenis";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -350,8 +350,7 @@ import Layout from "../layouts/Layout.astro";
                 trigger: aboutHero,
                 start: '5% left',
                 end: 'center',
-                scrub: true,
-                markers: true,
+                scrub: true
             }
         })
     })

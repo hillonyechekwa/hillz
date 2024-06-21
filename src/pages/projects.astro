@@ -15,7 +15,7 @@ const projects = await getCollection("projects")
             Here are a few of my best projects that show case how I use the technologies in my tech stack to solve problems around my life and things that interest me.
         </p>
     </header>
-    <section class="project-list">
+    <section class="list">
         <ProjectList projects={projects}/>
     </section>
 </main>
@@ -52,7 +52,7 @@ const projects = await getCollection("projects")
     }
 }
  
-.project-list{
+.list{
     width: 100%;
     height: auto;
     padding: 10px;
@@ -82,4 +82,74 @@ const projects = await getCollection("projects")
     }
 }
 </style>
+<script>
+    import {gsap} from "gsap";
+    import { ScrollTrigger } from "gsap/all";
+    import Lenis from "lenis";
+    //TODO: refactor this animation code to work in different media queries.
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline();
+
+    const lenis = new Lenis();
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    let mm = gsap.matchMedia()
+
+    mm.add("(min-width: 800px)", () => {
+
+        const list = document.querySelector('.list');
+        const projects = list.querySelector('.project-list')
+
+        const projectsHero = document.querySelector(".projects-hero");
+        const heading = projectsHero.querySelector("h1")
+        const subHead = projectsHero.querySelector("p")
+
+        console.log(projectsHero)
+
+        tl.to(heading, {
+            x: -60,
+            opacity: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: projectsHero,
+                start: "100px",
+                end: "bottom",
+                scrub: true
+            }
+        }).to(subHead, {
+            x: 60,
+            opacity: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: projectsHero,
+                start: "100px",
+                end: "bottom",
+                scrub: true
+            }
+        }).fromTo(projects.querySelectorAll('article'), {
+            opacity: 0,
+            y: 10,
+        }, {
+            opacity: 1,
+            y: 0,
+            delay: 0.5,
+            ease: 'power2.inOut',
+            stagger: 0.1,
+            scrollTrigger: {
+                trigger: list,
+                start: "top right",
+                end: "bottom left",
+                scrub: true
+            }
+        })
+    })
+
+</script>
 </Layout>

@@ -73,11 +73,10 @@ const projects = await getCollection("projects");
             <section id="index-projects">
                 <h2 id="ip-heading">Projects</h2>
                 <p id="proj-sec-desc">
-                    Here's a list of some of my projects.<p>
+                    Here's a list of some of my projects.
+                <p>
                         <!-- add project Card component here. -->
                         <ProjectList projects={projects} />
-                    </p>
-                </p>
             </section>
             <style>
                 .home-hero {
@@ -179,7 +178,6 @@ const projects = await getCollection("projects");
                     background-color: var(--base);
                     transform: scaleX(0.7);
                     
-
                     article {
                         display: flex;
                         flex-direction: column;
@@ -240,12 +238,10 @@ const projects = await getCollection("projects");
                     .project-list {
                         width: fit-content;
                         scroll-behavior: smooth;
-                        display: flex;
-                        /* flex-direction: column; */
-                        /* justify-content: space-between; */
-                        /* align-items: center; */
-                        column-gap: 50px;
-                        overflow-x: hidden;
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-template-rows: repeat(2, 1fr);
+                        gap: 20px;
                     }
                 }
 
@@ -298,6 +294,7 @@ const projects = await getCollection("projects");
 
                     section#index-projects {
                         .project-list {
+                            visibility: hidden;
                             column-gap: 30px;
                         }
                     }
@@ -309,166 +306,176 @@ const projects = await getCollection("projects");
             <script>
                 import {gsap} from "gsap";
                 import { ScrollTrigger } from "gsap/all";
-                import Lenis from "@studio-freight/lenis";
+                import Lenis from "lenis";
                 //TODO: refactor this animation code to work in different media queries.
                 gsap.registerPlugin(ScrollTrigger);
 
-                const tl = gsap.timeline();
+                 const tl = gsap.timeline();
 
-                const lenis = new Lenis();
+                 const lenis = new Lenis();
 
-                function raf(time) {
-                    lenis.raf(time);
-                    requestAnimationFrame(raf);
-                }
+                 function raf(time) {
+                     lenis.raf(time);
+                     requestAnimationFrame(raf);
+                 }
 
-                requestAnimationFrame(raf);
+                 requestAnimationFrame(raf);
 
-                const firstCol = document.querySelector("#first-col");
-                const secondCol = document.querySelector("#second-col p");
-                const topHeading = document.querySelector("#top-heading");
-                const bottomHeading = document.querySelector("#bottom-heading");
-                const heroButton = document.querySelector(".home-hero button");
-                const homeHero = document.querySelector(".home-hero");
+                 let mm = gsap.matchMedia()
+
+                 mm.add("(min-width: 800px)", {
+                     const firstCol = document.querySelector("#first-col");
+                 const secondCol = document.querySelector("#second-col p");
+                 const topHeading = document.querySelector("#top-heading");
+                 const bottomHeading = document.querySelector("#bottom-heading");
+                 const heroButton = document.querySelector(".home-hero button");
+                 const homeHero = document.querySelector(".home-hero");
 
 
-                    tl.to(firstCol, {
-                        scrollTrigger: {
-                            trigger: homeHero,
-                            start: "100px",
-                            end: "bottom",
-                            scrub: true
-                        },
-                        x: -500,
+                     tl.to(firstCol, {
+                         scrollTrigger: {
+                             trigger: homeHero,
+                             start: "100px",
+                             end: "bottom",
+                             scrub: true
+                         },
+                         x: -500,
+                         opacity: 0,
+                         ease: "power2.out"
+                     }).to(secondCol, {
+                         scrollTrigger: {
+                             trigger: homeHero,
+                             start: "40px",
+                             end: "bottom",
+                             scrub: true
+                         },
+                         x: 100,
+                         opacity: 0,
+                         ease: "power2.out",
+                         delay: .3
+                     }).to(heroButton, {
+                         scrollTrigger: {
+                             trigger: homeHero,
+                             start: "120px",
+                             end: "bottom",
+                             scrub: true
+                         },
+                         x: 50,
+                         opacity: 0,
+                         ease: "power2.out",
+                         delay: .5
+                     }).to(topHeading, {
+                         scrollTrigger: {
+                             trigger: homeHero,
+                             start: "200px",
+                             end: "bottom",
+                             scrub: true
+                         },
+                         x: -100,
+                         opacity: 0,
+                         ease: "power2.out"
+                     }).to(bottomHeading, {
+                         scrollTrigger: {
+                             trigger: homeHero,
+                             start: "200px",
+                             end: "bottom",
+                             scrub: true
+                         },
+                         x: 100,
+                         opacity: 0,
+                         ease: "power2.out"
+                     })
+ //----------------------about-section-animation-----------------
+                     const aboutContainer = document.querySelector("#about");
+                     const aboutText = document.querySelectorAll("#about p");
+                     const aboutHeading = document.querySelectorAll("#about h3");
+
+
+                     tl.to(aboutContainer, {
+                         scrollTrigger: {
+                             trigger: aboutContainer,
+                             start: "-180px right",
+                             end: "300px",
+                             scrub: true,                         
+                         },
+                         scaleX: 1,
+                         ease: "power2.inOut"
+                     })
+
+                     tl.to(aboutHeading, {
+                             scrollTrigger: {
+                                 trigger: aboutContainer,
+                                 start: "-25px right",
+                                 end: "bottom",
+                                 scrub: true,
+                             },
+                             opacity: 1,
+                             y: 0
+                         })
+                     aboutText.forEach((item) => {
+                         tl.to(item, {
+                             scrollTrigger: {
+                                 trigger: aboutContainer,
+                                 start: "20px right",
+                                 end: "bottom",
+                                 scrub: true,
+                             },
+                             opacity: 1,
+                             delay: 1.3
+                         })
+                     })
+
+
+  //-------------project-section----------------
+                 const projectSection = document.querySelector("#index-projects")
+
+                 const projectSectHeading = projectSection.querySelector("h2");
+
+                 const projectSlide = projectSection.querySelector(".project-list")
+                     console.log(projectSlide)
+                 const projectSlideWidth = projectSlide.offsetWidth
+
+                 tl.to("#ip-heading", {
+                     scrollTrigger: {
+                         trigger: projectSection,
+                         start: "-10px right",
+                         end: "bottom",
+                         scrub: true,
+                     },
+                     opacity: 1,
+                     translateX: 0,
+                     ease: "none"
+                 }).to("#proj-sec-desc",{
+                     scrollTrigger: {
+                         trigger: projectSection,
+                         start: "-10px right",
+                         end: "bottom",
+                         scrub: true,
+                     },
+                     opacity: 1,
+                     translateX: 0,
+                     ease: "none"
+                 }).fromTo(projectSlide.querySelectorAll('article'), {
                         opacity: 0,
-                        ease: "power2.out"
-                    }).to(secondCol, {
+                        y: 10,
+                   
+                   }, {
+                        opacity: 1,
+                        y: 0,
+                        delay: 0.5,
+                        ease: 'power2.inOut',
+                        stagger: 0.1,
                         scrollTrigger: {
-                            trigger: homeHero,
-                            start: "40px",
-                            end: "bottom",
-                            scrub: true
-                        },
-                        x: 100,
-                        opacity: 0,
-                        ease: "power2.out",
-                        delay: .3
-                    }).to(heroButton, {
-                        scrollTrigger: {
-                            trigger: homeHero,
-                            start: "120px",
-                            end: "bottom",
-                            scrub: true
-                        },
-                        x: 50,
-                        opacity: 0,
-                        ease: "power2.out",
-                        delay: .5
-                    }).to(topHeading, {
-                        scrollTrigger: {
-                            trigger: homeHero,
-                            start: "200px",
-                            end: "bottom",
-                            scrub: true
-                        },
-                        x: -100,
-                        opacity: 0,
-                        ease: "power2.out"
-                    }).to(bottomHeading, {
-                        scrollTrigger: {
-                            trigger: homeHero,
-                            start: "200px",
-                            end: "bottom",
-                            scrub: true
-                        },
-                        x: 100,
-                        opacity: 0,
-                        ease: "power2.out"
-                    })
-//----------------------about-section-animation-----------------
-                    const aboutContainer = document.querySelector("#about");
-                    const aboutText = document.querySelectorAll("#about p");
-                    const aboutHeading = document.querySelectorAll("#about h3");
+                            trigger: projectSection,
+                            start: "top left",
+                            end: "bottom left",
+                            scrub: true, 
+                        }
+                   })
+                 })
 
-
-                    tl.to(aboutContainer, {
-                        scrollTrigger: {
-                            trigger: aboutContainer,
-                            start: "-180px right",
-                            end: "300px",
-                            scrub: true,
-                           
-                        },
-                        scaleX: 1,
-                        ease: "power2.inOut"
-                    })
-
-                    tl.to(aboutHeading, {
-                            scrollTrigger: {
-                                trigger: aboutContainer,
-                                start: "-25px right",
-                                end: "bottom",
-                                scrub: true,
-                            },
-                            opacity: 1,
-                            y: 0
-                        })
-                    aboutText.forEach((item) => {
-                        tl.to(item, {
-                            scrollTrigger: {
-                                trigger: aboutContainer,
-                                start: "20px right",
-                                end: "bottom",
-                                scrub: true,
-                            },
-                            opacity: 1,
-                            delay: 1.3
-                        })
-                    })
-
-
- //-------------project-section----------------
-                const projectSection = document.querySelector("#index-projects")
-
-                const projectSectHeading = projectSection.querySelector("h2");
-
-                const projectSlide = projectSection.querySelector(".project-list")
-                    console.log(projectSlide)
-                const projectSlideWidth = projectSlide.offsetWidth
-
-                let amountToScroll = projectSlideWidth - window.innerWidth
-
-                tl.to("#ip-heading", {
-                    scrollTrigger: {
-                        trigger: projectSection,
-                        start: "-10px right",
-                        end: "bottom",
-                        scrub: true,
-                    },
-                    opacity: 1,
-                    translateX: 0,
-                    ease: "none"
-                }).to("#proj-sec-desc",{
-                    scrollTrigger: {
-                        trigger: projectSection,
-                        start: "-10px right",
-                        end: "bottom",
-                        scrub: true,
-                    },
-                    opacity: 1,
-                    translateX: 0,
-                    ease: "none"
-                }).to(projectSlide, {
-                    x: -amountToScroll,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: projectSection,
-                        start: "top 30px",
-                        end: "+=" + amountToScroll,
-                        pin: true,
-                        scrub: true,
-                    }
-                })
+                
+                
 
             </script>
         </main>
