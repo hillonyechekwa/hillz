@@ -60,27 +60,6 @@ const projects = await getCollection("projects")
     place-items: center;
 }
 
-@media screen and (max-width: 600px){
-    .projects-hero{
-        /* flex-direction: column; */
-
-        h1{
-            /* font-size: 2.9rem; */
-        }
-
-        p{
-            font-size: .9em;
-            inline-size: 300px;
-            line-height: 1.4rem;
-            position: relative;
-            top: -50px;
-        }
-    }
-
-    .project-list{
-        padding-left: 30px;
-    }
-}
 </style>
 <script>
     import {gsap} from "gsap";
@@ -111,7 +90,7 @@ const projects = await getCollection("projects")
         const heading = projectsHero.querySelector("h1")
         const subHead = projectsHero.querySelector("p")
 
-        console.log(projectsHero)
+        console.log(projectsHero);
 
         tl.to(heading, {
             x: -60,

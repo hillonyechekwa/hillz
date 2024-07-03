@@ -21,24 +21,23 @@ import Layout from "../layouts/Layout.astro";
       />
     </header>
     <main id="about-content">
-      <section data-depth='0.5' class='parallax-sections'>
+      <section data-depth='0.5' class='about-sections'>
         <p>
-          I'm Hill, a software engineer from Lagos, Nigeria. I sometimes like to
-          think that programming is how I like to express my creative interests
-          by building functional, user-friendgit pushly and aesthetically
+          I'm Hill, a software engineer from Lagos, Nigeria.Building software especially for the browser is how I like to express my creative interests
+          by building functional, user-friendly and aesthetically
           appealing applications that solve different problems around me.
         </p>
         <p>
-          While I have a diploma in computer science, I still enjoy writing,
-          consuming knowledge about history, art, faith and physics and talking
-          about it in my pass-time.
+          While I have a diploma in computer science, 
+          and I've worked with several organizations as a freelance developer and 
+          I also teach web development
         </p>
       </section>
-      <section>
-        <p>
+      <section class="about-sections">
+      <p>
           When I'm not building more things into the simulation of our existing
           space-time continum, I spend tiime in my home city in Lagos, Nigeria
-          with my quite large family and friends.
+          with family and friends.
         </p>
 
         <p>
@@ -48,12 +47,13 @@ import Layout from "../layouts/Layout.astro";
           backend.
         </p>
       </section>
-      <section id="last-section">
+      <section id="last-section" class="about-sections">
         <p>
           When I'm not building web applcaitions or interfaces, I tend to tinker
           in my interest in building software for embedded systems and work
           towards my aspiration of being an embedded systems engineer/robotics
-          system engineer sometime in the near future.
+          system engineer sometime in the near future, and write articles about 
+          any new project i'm working on or any new technology i'm learning.
         </p>
       </section>
     </main>
@@ -257,56 +257,7 @@ import Layout from "../layouts/Layout.astro";
       }
     }
 
-    @media screen and (max-width: 600px) {
-      #about-hero {
-        flex-direction: column;
-        align-items: center;
-
-        h1 {
-          font-size: 3rem;
-        }
-
-        img {
-          width: 150px;
-          height: 200px;
-        }
-      }
-
-      #about-content section {
-        flex-direction: column;
-
-        p {
-          font-size: 0.9rem;
-          inline-size: 350px;
-          line-height: 1.4rem;
-        }
-      }
-
-      section#skills {
-        h3 {
-          font-size: 1.5rem;
-        }
-
-        p {
-          font-size: 0.9em;
-          line-height: 1.3rem;
-          left: 10%;
-          inline-size: 300px;
-        }
-
-        #skills-grid {
-          width: 100%;
-
-          h4 {
-            font-size: 0.8rem;
-          }
-
-          img {
-            width: 30px;
-          }
-        }
-      }
-    }
+   
   </style>
   <script>
     import { gsap } from "gsap";
@@ -315,45 +266,81 @@ import Layout from "../layouts/Layout.astro";
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const aboutHero = document.querySelector("#about-hero");
-    const aboutContent = document.querySelector("#about-content");
-    const skills = document.querySelector("#skills");
+    const lenis = new Lenis();
 
-    // about hero styles
-    const tl = gsap.timeline();
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
 
-    gsap.utils.toArray('#about-hero > h1 > span').forEach((span, index) => {
-        gsap.to(span, {
-            y: index === 0 ? -30 : 30,
-            x: index === 0 ? -100 : 100,
-            opacity: 0,
-            ease: 'power2.inOut',
-            stagger: 0.1,
-            delay: .3,
-            scrollTrigger: {
-                trigger: aboutHero,
-                start: '3px left',
-                end: 'center',
-                scrub: true
-            }
+    requestAnimationFrame(raf);
+
+    let mm = gsap.matchMedia()
+
+    mm.add("(min-width: 800px)", () => {
+      const aboutHero = document.querySelector("#about-hero");
+      const aboutContent = document.querySelector("#about-content");
+      const skills = document.querySelector("#skills");
+
+   
+      // about hero styles
+      const tl = gsap.timeline();
+
+      gsap.utils.toArray('#about-hero > h1 > span').forEach((span, index) => {
+          gsap.to(span, {
+              y: index === 0 ? -30 : 30,
+              x: index === 0 ? -100 : 100,
+              opacity: 0,
+              ease: 'power2.inOut',
+              stagger: 0.1,
+              delay: .3,
+              scrollTrigger: {
+                  trigger: aboutHero,
+                  start: '3px left',
+                  end: 'center',
+                  scrub: true
+              }
+          })
+      })
+
+      gsap.utils.toArray('.about-images').forEach((image, index) => {
+        // console.log(image)
+          gsap.to(image, {
+              x: index === 0? -80 : 80,
+              opacity: 0,
+              ease: 'power2.inOut',
+              stagger: 0.1,
+              delay: 0.3,
+              scrollTrigger: {
+                  trigger: aboutHero,
+                  start: '5% left',
+                  end: 'center',
+                  scrub: true
+              }
+          })
+      })
+
+      
+       gsap.utils.toArray('.about-sections p').forEach((sect, index) => {
+        gsap.fromTo(sect, {
+          x: -10,
+          opacity: 0
+        },{
+          x:0,
+          opacity: 1,
+          ease: 'power2.inOut',
+          stagger: 0.1,
+          delay: 0.1,
+          scrollTrigger: {
+            trigger: aboutContent,
+            start: 'top bottom-=50',
+            end: 'bottom center',
+            scrub: true
+          }
         })
+       })
     })
-
-    gsap.utils.toArray('.about-images').forEach((image, index) => {
-        gsap.to(image, {
-            x: index === 0? -80 : 80,
-            opacity: 0,
-            ease: 'power2.inOut',
-            stagger: 0.1,
-            delay: 0.3,
-            scrollTrigger: {
-                trigger: aboutHero,
-                start: '5% left',
-                end: 'center',
-                scrub: true
-            }
-        })
-    })
+    
 
     
    
