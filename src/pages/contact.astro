@@ -4,18 +4,18 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Hill | Contact">
     <main class="contacts-wrapper">
-        <header id="contacts-hero">
-            <h3>
+        <header class="p-2 h-screen flex flex-col justify-around items-center">
+            <h3 class="font-gotham text-md text-center">
                 If you have any interesting projects you'd like me to be a part
                 of, or just want to talk shop and share Ideas, contact me. I
                 love getting involved in open source projects too.
             </h3>
-            <img src="/illustrations/staringbeaniehill.svg" alt="" />
+            <img class="w-60" src="/illustrations/staringbeaniehill.svg" alt="" />
         </header>
-        <section class="form-section">
-            <section class="form-wrapper">
-                <form name="contact" data-netlify="">
-                    <div class="form-control">
+        <section class="">
+            <section class="">
+                <form name="contact">
+                    <div class="">
                         <input
                             type="text"
                             name="name"
@@ -24,7 +24,7 @@ import Layout from "../layouts/Layout.astro";
                         />
                         <label for="name"> Name </label>
                     </div>
-                    <div class="form-control">
+                    <div class="">
                         <input
                             type="email"
                             name="email"
@@ -33,7 +33,7 @@ import Layout from "../layouts/Layout.astro";
                         />
                         <label for="email"> Email </label>
                     </div>
-                    <div class="form-control">
+                    <div class="">
                         <textarea
                             name="message"
                             id="message"
@@ -50,191 +50,5 @@ import Layout from "../layouts/Layout.astro";
         </section>
     </main>
 
-    <style>
-        #contacts-hero {
-            width: 100%;
-            height: 100dvh;
-            position: relative;
-
-            h3 {
-                font-family: var(--gopher);
-                font-size: 1.6em;
-                inline-size: 500px;
-                position: relative;
-                top: 20%;
-                left: 25%;
-                color: var(--primary-text);
-                line-height: 1.7rem;
-            }
-
-            img {
-                width: 450px;
-                position: absolute;
-                top: 50%;
-                left: 25%;
-                z-index: 1;
-            }
-        }
-
-        .form-section {
-            width: 100%;
-            height: 100dvh;
-            display: flex;
-            flex-wrap: wrap-reverse;
-            justify-content: space-evenly;
-            align-items: center;
-
-            h3 {
-                font-family: var(--gopher);
-                font-size: 2rem;
-                inline-size: 250px;
-                line-height: 1.8rem;
-                text-transform: capitalize;
-                color: var(--primary-text);
-                position: relative;
-                top: -30%;
-            }
-        }
-        .form-wrapper {
-            width: 600px;
-            height: auto;
-            display: grid;
-            place-items: center;
-            padding: 30px 5px;
-            border-radius: 15px;
-            background-color: var(--bg);
-            border: 3px solid var(--base);
-            position: relative;
-            z-index: 1;
-
-            .form-control {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                font-family: var(--gopher);
-                padding: 5px;
-                position: relative;
-                margin-bottom: 40px;
-
-                label {
-                    font-size: 0.6em;
-                    position: absolute;
-                    left: 15px;
-                    top: 20px;
-                    border: 1px solid transparent;
-                    padding: 3px;
-                    margin: 0;
-                    background-color: var(--surface);
-                    color: var(--primary-text);
-                    transition:
-                        top 300ms,
-                        color 300ms,
-                        border-color 300ms,
-                        font-size 300ms;
-                    z-index: 2;
-                }
-
-                input {
-                    border: 2px solid var(--surface);
-                    border-radius: 20px;
-                    font-family: var(--gopher);
-                    background-color: var(--surface);
-                    color: var(--primary-text);
-                    width: 100%;
-                    outline: none;
-                    padding: 15px 10px;
-                    position: relative;
-                    z-index: 1;
-
-                    &:focus ~ label,
-                    &:not(:placeholder-shown) ~ label {
-                        top: -5px;
-                        left: 15px;
-                        font-size: 14px;
-                        border-color: transparent;
-                        background-color: transparent;
-                    }
-                }
-
-                textarea {
-                    padding: 20px;
-                    width: 100%;
-                    position: relative;
-                    border: 2px solid transparent;
-                    font-family: var(--gopher);
-                    background-color: var(--surface);
-                    color: var(--primary-text);
-                    outline: none;
-                    z-index: 1;
-
-                    & + label {
-                        left: 25px;
-                    }
-
-                    &:focus ~ label,
-                    &:not(:placeholder-shown) ~ label {
-                        top: -5px;
-                        left: 15px;
-                        font-size: 14px;
-                        border-color: transparent;
-                        background-color: transparent;
-                    }
-                }
-            }
-        }
-
-        form button {
-            width: 250px;
-            border: none;
-            border-radius: 25px;
-            display: grid;
-            place-items: center;
-            font-family: var(--gopher);
-            font-weight: 600;
-            font-size: 1.2em;
-            color: var(--primary-text);
-            padding: 15px;
-            position: relative;
-            margin: 0 auto;
-            border: none;
-            border: 2px solid var(--base);
-            background-color: var(--btn-color);
-            cursor: pointer;
-
-            a {
-                width: 100%;
-                height: 100%;
-                position: relative;
-                border-radius: 25px;
-                
-                z-index: 2;
-                cursor: pointer;
-            }
-
-            &:after {
-                content: var(--btn-arrow);
-                display: inline-block;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                border: 2px solid var(--base);
-                background-color: var(--base);
-                position: absolute;
-                left: 270px;
-                top: -2px;
-                padding: 13px;
-            }
-        }
-
-        .contacts-wrapper {
-            padding: 50px 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-       
-    </style>
+   
 </Layout>

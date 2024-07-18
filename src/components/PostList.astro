@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Post from "./Post.astro";
+type Props = {
+  posts: CollectionEntry<"posts">[];
+};
+
+const { posts } = Astro.props;
+---
+
+<section class="w-full flex flex-col gap-y-5">
+  {posts.map((post) => <Post post={post} />)}
+</section>
+
+<style>
+</style>

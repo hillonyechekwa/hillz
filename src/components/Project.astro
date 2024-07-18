@@ -1,6 +1,8 @@
 ---
 import { getEntryBySlug, type CollectionEntry } from "astro:content";
 import {Image} from "astro:assets"
+
+
 type Props = {
     project: CollectionEntry<"projects">
 }
@@ -9,68 +11,29 @@ const {project} = Astro.props
 ---
 
 
-<article class="project">
-    <a href={`/projects/${project.slug}`}>
-        <h2 class="post-title">{project.data.title}</h2>
-        <p class="post-summary">{project.data.summary}</p>
-        <nav>{project.data.tech.map( t => {
+<article class="border border-black flex flex-col justify-evenly gap-8 items-center w-200 p-2 rounded-md">
+    <a class="flex flex-col items-center justify-between w-full flex-wrap" href={`/projects/${project.slug}`}>
+        <Image 
+        src={`${project.data.image}`} 
+        width="300"
+        height="70"
+        alt={`${project.data.title}`}
+        quality="80"
+        loading="lazy"
+        class="rounded-md"
+        />
+        <h2 class="font-gopher text-lg">{project.data.title}</h2>
+        <p class="post-summary line-clamp-1 hover:line-clamp-none w-44">{project.data.summary}</p>
+        <ul class="w -full p-2 flex gap-x-4 flex-wrap">{project.data.tech.map( t => {
             return(
-                <p class="tech-items">
+                <li class=" font-gopher text-sm">
                     {t}
-                </p>
+                </li>
             )
-        })}</nav>
+        })}</ul>
     </a>
 </article>
 
 <style>
-    .project{
-        width: 400px;
-        height: auto;
-        padding: 15px;
-        display: grid;
-        place-items: center;
-        border: 2px solid var(--base);
-        border-radius: 8px;
-        background-color: var(--base);
-
-        a{
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            row-gap: 40px;
-
-            h2.post-title{
-                font-size: 1.2rem;
-                font-family: var(--gopher);
-                color: var(--primary-text);
-            }
-
-            p.post-summary{
-                font-size: .8rem;
-                font-family: var(--gotham);
-                color: var(--primary-text);
-                inline-size: 300px;
-            }
-
-            nav{
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                padding: 10px;
-                width: 100%;
-            }
-        }
-
-        .tech-items{
-            font-family: var(--gotham);
-            color: var(--primary-text);
-            font-size: .7rem;
-            text-transform: capitalize;
-        }
-    }
+    
 </style>

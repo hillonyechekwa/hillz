@@ -1,3 +1,5 @@
+'use client'
+
 import LightOn from "/light-on.mp3";
 import LightOff from "/light-off.mp3";
 import moon from "./moon.svg"
@@ -82,66 +84,66 @@ export default function Nav() {
 
     useEffect(() => {
 
-    const themeBtn = document.querySelector(".theme-switch")
-        
-    const getCurrentTheme = () => {
-        let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark": "light";
-        localStorage.getItem("hills.theme") ? theme = localStorage.getItem("hills.theme") : null;
-        return theme;
-    }
-
-
-    const handleThemeClick = () => {
-        let theme = getCurrentTheme();
-        let audio;
-
-        if(theme === "dark"){
-            audio = document.querySelector(".switch-on");
-            theme = "light";
-        }else {
-            audio = document.querySelector(".switch-off");
-            theme = "dark";
+        const themeBtn = document.querySelector(".theme-switch")
+            
+        const getCurrentTheme = () => {
+            let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark": "light";
+            localStorage.getItem("hills.theme") ? theme = localStorage.getItem("hills.theme") : null;
+            return theme;
         }
 
-        audio.currentTime = 0;
-        audio.play();
-        localStorage.setItem("hills.theme", `${theme}`);
-        loadTheme(theme);
-    }
 
+        const handleThemeClick = () => {
+            let theme = getCurrentTheme();
+            let audio;
 
-    const loadTheme = (theme) => {
-        const root = document.querySelector(":root");
+            if(theme === "dark"){
+                audio = document.querySelector(".switch-on");
+                theme = "light";
+            }else {
+                audio = document.querySelector(".switch-off");
+                theme = "dark";
+            }
 
-        
-        if(theme === "dark"){
-            setTheme("light")
-        }else{
-            setTheme("dark")
+            audio.currentTime = 0;
+            audio.play();
+            localStorage.setItem("hills.theme", `${theme}`);
+            loadTheme(theme);
         }
 
-        root.setAttribute('color-scheme', `${theme}`);
-    }
+
+        const loadTheme = (theme) => {
+            const root = document.querySelector(":root");
+
+            
+            if(theme === "dark"){
+                setTheme("light")
+            }else{
+                setTheme("dark")
+            }
+
+            root.setAttribute('color-scheme', `${theme}`);
+        }
 
 
-    window.addEventListener("DOMContentLoaded", () => {
-        loadTheme(getCurrentTheme());
-    })
+        window.addEventListener("DOMContentLoaded", () => {
+            loadTheme(getCurrentTheme());
+        })
 
-    themeBtn.addEventListener("click", handleThemeClick)
+        themeBtn.addEventListener("click", handleThemeClick)
 
-    return () => {
-        themeBtn.removeEventListener("click", handleThemeClick)
-    }
+        return () => {
+            themeBtn.removeEventListener("click", handleThemeClick)
+        }
 }, [theme])
 
 
 
     return (
         <nav className="navigation">
-            <div id="logo-wrapper">
+            <a href="/" id="logo-wrapper">
                 <img className="logo" src="/illustrations/satedmaskedhill.svg" alt="hilllogo" />
-            </div>
+            </a>
             {matches && (
 
                 <ul className="nav-container-flex">
@@ -162,7 +164,7 @@ export default function Nav() {
 
                     </li>
                     <li>
-                        <a href="/teaching">teaching</a>
+                        <a href="/skills">skills</a>
 
                     </li>
                     <li>
@@ -221,7 +223,7 @@ export default function Nav() {
                         <a href="/blog">blog</a>
                     </motion.li>
                     <motion.li variants={navChildVariants} className="mobile-nav-item">
-                        <a href="/teaching">teaching</a>
+                        <a href="/skills">skills</a>
                     </motion.li>
                     <motion.li variants={navChildVariants} className="mobile-nav-item">
                         <a href="/contact">contact</a>

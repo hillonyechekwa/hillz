@@ -12,6 +12,15 @@ const projectsCollection = defineCollection({
     })
 })
 
+const postsCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        summary: z.string(),
+        tags: z.array(z.string())
+    })
+})
+
 export const collections = {
-    projects: projectsCollection
+    projects: projectsCollection,
+    posts: postsCollection
 }
