@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Post from "./Post.astro";
+
+
 type Props = {
   posts: CollectionEntry<"posts">[];
 };
@@ -8,9 +10,13 @@ type Props = {
 const { posts } = Astro.props;
 ---
 
-<section class="w-full flex flex-col gap-y-5">
-  {posts.map((post) => <Post post={post} />)}
-</section>
+<section
+  class="w-full flex flex-col p-8 justify-evenly items-center gap-y-5 md:grid md:grid-cols-2 md:justify-evenly md:items-center md:gap-4"
 
-<style>
-</style>
+>
+  {
+    posts.map((post) => {
+      return <Post post={post} />;
+    })
+  }
+</section>

@@ -8,14 +8,11 @@ const posts = await getCollection("posts");
 <Layout title="Hill | Blog">
   <main class="p-3">
     <header class="p-2">
-      <h2 class="font-gopher text-4xl">
-        Blog.
-      </h2>
+      <h2 class="font-gopher text-4xl dark:text-gray-200">Blog.</h2>
     </header>
 
-    <main>
+    <main class="w-full flex justify-center items-centermd:p-8">
       <PostList posts={posts} />
     </main>
   </main>
-
 </Layout>

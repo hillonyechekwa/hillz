@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import Project from "./Project.astro";
-import Prose from "./Prose.astro";
 type Props = {
   projects: CollectionEntry<"projects">[];
 };
@@ -9,16 +8,13 @@ type Props = {
 const { projects } = Astro.props;
 ---
 
-<section class="w-full grid place-items-center gap-5 relative">
+<section
+  class="grid grid-cols-1 justify-evenly items-center gap-y-5 md:grid md:grid-cols-2 md:justify-evenly md:items-center md:gap-4 lg:gap-12"
+>
   {
     projects.map((project) => {
-      return (
-        <Prose>
-          <Project project={project} />
-        </Prose>
-      );
+      return <Project project={project} />;
     })
   }
 </section>
 
-<style></style>

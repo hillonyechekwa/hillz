@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+    /* --gotham: "Gotham", sans-serif; */
+    --gopher: "Gopher", sans-serif;
+    --league: "League Gothic", sans-serif;
+   
+}

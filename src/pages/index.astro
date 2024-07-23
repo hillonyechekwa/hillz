@@ -11,27 +11,31 @@ const posts = await getCollection("posts");
 <Layout title="Hill | Home">
   <main class="w-full">
     <header
-      class="w-full h-screen p-2 flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 md:items-center justify-evenly items-start md:relative"
+    class=" dark:bg-blue/40 w-full h-screen p-2 flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 md:items-center justify-evenly items-start md:relative"
     >
       <article
-        class="w-full flex flex-col md:justify-center md:pl-3 md:gap-y-20 md:w-full md:h-fit md:relative md:bottom-32"
+        class="w-full flex flex-col md:justify-center md:pl-3 lg:pl-6 md:gap-y-20 md:w-full md:h-fit md:relative md:bottom-32"
       >
-        <h3 class="w-full flex flex-col justify-around">
-          <span class="font-gopher text-5xl md:text-6xl">Web</span>
-          <span class="font-gopher text-5xl md:text-6xl">Engineer</span>
-          <small class="font-gotham md:text-lg">
+        <h3
+          class="text-blue dark:text-gray-200 w-full flex flex-col justify-around font-gopher text-5xl md:text-6xl"
+        >
+          <span class="">Web</span>
+          <span class="">Engineer</span>
+          <small class="text-gray-600 dark:text-gray-200 dark:text-text font-gotham text-sm md:text-lg">
             <span>Typescript</span>
             <span>Rust</span>
             <span>GraphQl</span>
           </small>
         </h3>
-        <h3 class="relative top-8 flex flex-col">
-          <span class="font-gopher text-3xl md:text-5xl">Technical</span>
-          <span class="font-gopher text-3xl md:text-5xl">Writer</span>
+        <h3
+          class="text-blue dark:text-gray-200 relative top-8 flex flex-col font-gopher text-3xl md:text-5xl"
+        >
+          <span class="">Technical</span>
+          <span class="">Writer</span>
         </h3>
       </article>
       <article class="flex flex-col gap-10">
-        <p class="font-gotham font-medium md:line-clamp-4">
+        <p class="text-gray-600 dark:text-gray-200 font-gotham font-bold md:line-clamp-4 lg:p-20">
           I have an invested interest in the multi-faceted parts of software
           engineering and computer programming and implementing them to solve
           real problems that affect me and my environment.
@@ -44,28 +48,34 @@ const posts = await getCollection("posts");
                 /> -->
 
         <h1
-          class="relative top-8 flex flex-col font-gopher text-5xl md:text-7xl md:font-extrabold mx-auto md:absolute md:top-3/4 md:right-44"
+          class="text-blue dark:text-gray-200 relative top-8 flex flex-col font-gopher text-5xl md:text-7xl lg:text-9xl md:font-extrabold mx-auto md:absolute md:top-3/4 md:right-44 lg:top-0 lg:z-0 lg:relative lg:opacity-15 dark:lg:opacity-100"
         >
-          <span class="self-center">Hillary</span>
-          <span>Onyechekwa</span>
+          <span class="self-center lg:tracking-wide">Hillary</span>
+          <span class="lg:tracking-wide">Onyechekwa</span>
         </h1>
       </article>
     </header>
-    <main class="index-main pt-8 flex flex-col justify-evenly items-center">
-      <section class="w-full h-auto flex flex-col jusify-evenly items-center gap-y-3">
-        <div>
-          <h2 class="font-gopher text-3xl">Projects.</h2>
+    <main class="pt-8 flex flex-col justify-evenly items-center gap-y-8">
+      <section
+        class="py-8 bg-blue dark:bg-transparent w-full h-auto flex flex-col jusify-evenly items-center gap-y-3"
+      >
+        <div class="w-full flex flex-row justify-center lg:justify-start items-center pl-3">
+          <h2 class="font-gopher text-3xl text-gray-200 dark:text-gray-300 md:text-5xl">Projects.</h2>
         </div>
         <section class="w-full grid place-items-center relative">
           <ProjectList projects={projects} />
         </section>
       </section>
-      <section class="w-full p-2 flex flex-col justify-evenly items-center gap-y-3">
+      <section
+        class=" w-full p-2 flex flex-col justify-evenly items-center gap-y-3"
+      >
         <div>
-          <h2 class="font-gopher text-3xl">Articles.</h2>
+          <h2 class="font-gopher dark:text-gray-300 text-3xl md:text-5xl">Articles.</h2>
         </div>
-        <section class="w-full grid place-items-center">
-            <PostList posts={posts} />
+        <section
+          class="w-full flex flex-row justify-center items-center relative"
+        >
+          <PostList posts={posts} />
         </section>
       </section>
     </main>

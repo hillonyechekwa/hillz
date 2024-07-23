@@ -11,8 +11,8 @@ const {project} = Astro.props
 ---
 
 
-<article class="border border-black flex flex-col justify-evenly gap-8 items-center w-200 p-2 rounded-md">
-    <a class="flex flex-col items-center justify-between w-full flex-wrap" href={`/projects/${project.slug}`}>
+<article class="bg-gray-900 dark:bg-blue/50 text-gray-100 shadow-lg shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-80 md:w-auto p-2 md:p-4 rounded-md">
+    <div class="flex flex-col items-center justify-between md:justify-around w-full flex-wrap gap-y-4" >
         <Image 
         src={`${project.data.image}`} 
         width="300"
@@ -26,12 +26,16 @@ const {project} = Astro.props
         <p class="post-summary line-clamp-1 hover:line-clamp-none w-44">{project.data.summary}</p>
         <ul class="w -full p-2 flex gap-x-4 flex-wrap">{project.data.tech.map( t => {
             return(
-                <li class=" font-gopher text-sm">
+                <li class="text-blue dark:text-gray-200 font-gopher text-sm">
                     {t}
                 </li>
             )
         })}</ul>
-    </a>
+        <ul class="w-full flex flex-row justify-evenly items-center p-2 font-gopher">
+            <li><a class="text-red/50 hover:text-red/80" href={`${project.data.siteUrl}`}>site</a></li>
+            <li><a class="text-red/50 hover:text-red/80" href={`${project.data.repoUrl}`}>github</a></li>
+        </ul>
+    </div>
 </article>
 
 <style>

@@ -1,4 +1,3 @@
-'use client'
 
 import LightOn from "/light-on.mp3";
 import LightOff from "/light-off.mp3";
@@ -203,7 +202,7 @@ export default function Nav() {
                 </button>
             )}
 
-            {toggled && !matches && (
+            {/* {toggled && !matches && (
                 <motion.ul
                     className="nav-mobile-container-flex mobile-nav"
                     variants={navVariants}
@@ -229,7 +228,7 @@ export default function Nav() {
                         <a href="/contact">contact</a>
                     </motion.li>
                 </motion.ul>
-            )}
+            )} */}
 
         </nav>
 

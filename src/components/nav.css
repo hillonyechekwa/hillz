@@ -89,7 +89,7 @@
 	display: grid;
 	place-items: center;
 	position: relative;
-	left: 30%;
+	left: 20%;
 	border-radius: 50%;
 	border: none;
 	outline: none;
@@ -103,7 +103,7 @@
 	background: none;
 	border: none;
 	position: relative;
-	left: 70%;
+	left: 40%;
 	cursor: pointer;
 	outline: none;
 	border: 1px solid red;

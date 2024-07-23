@@ -26,24 +26,27 @@ type Props = {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+import Prose from "@/components/Prose.astro";
 ---
 
 <Layout title={`Hill | ${post.data.title}`}>
-  <main>
-    <header class="">
-      <h1 class="">{post.data.title}</h1>
-      <h4 class="">{post.data.summary}</h4>
+  <main class="w-full p-2">
+    <header class="dark:bg-blue/50 dark:text-gray-300 text-gray-700  w-full h-32 p2 flex flex-col justify-evenly items-center md:h-48 lg:h-52">
+      <h1 class="font-gopher text-3xl">{post.data.title}</h1>
+      <h4 class="font-gotham text-sm">{post.data.summary}</h4>
 
-      <nav class="">
+      <nav class="flex justify-between items-center mt-4 w-full lg:w-3/4 md:w-3/4">
         {
           post.data.tags.map((t) => {
-            return <p>{t}</p>;
+            return <p class="font-gotham text-lg">{t}</p>;
           })
         }
       </nav>
     </header>
-    <main class="">
-      <Content />
+    <main class="bg-gray-200 dark:bg-transparent p-2 mt-5 grid place-items-center">
+      <Prose>
+        <Content />
+      </Prose>
     </main>
   </main>
   <style>

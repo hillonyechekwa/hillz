@@ -1,0 +1,24 @@
+:root {
+    /* --gotham: "Gotham", sans-serif; */
+    --gopher: "Gopher", sans-serif;
+    --league: "League Gothic", sans-serif;
+
+    --primary: 240, 80%, 61%;
+    /*primary color*/
+    --button: 357, 100%, 63%;
+    /*all ctas*/
+    --content: 252, 25%, 23%;
+    /*dark bg*/
+    --bg: 266, 100%, 99%;
+    /*light bg*/
+}
+
+.dark{
+    --primary: 240, 80%, 61%;
+    /*primary color*/
+    --button: 357, 100%, 63%;
+    /*all ctas*/
+    --content: 266, 100%, 99%;
+    /*card bg*/
+    --bg: 252, 10%, 30%;
+}

@@ -4,7 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
-import Nav from "../components/Nav.tsx";
+// import "../styles/variables.css"
+import Nav from "../components/Nav.jsx";
 import Footer from "../components/Footer.tsx";
 ---
 
@@ -17,52 +18,29 @@ import Footer from "../components/Footer.tsx";
       name="description"
       content="I am a fullstack web engineer that builds web sites and applications to solve business problems using the beauty of programming logic in combination with modern technological solutions, tools and techniques"
     />
-    <meta name="viewport" content="width=device-width", initial-scale="1.0" />
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0" />
     <link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" />
     <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
     <link rel="apple-touch-icon" href="/favicons/android-chrome-192x192.png" />
-    <link
-      rel="stylesheet"
-      href="/syntax-highlight/prism-synthwave84.css"
-    />
+    <link rel="stylesheet" href="/syntax-highlight/prism-synthwave84.css" />
+    <link rel="stylesheet" href="/styles/variables.css" />
     <meta name="generator" content={Astro.generator} />
     <meta title={title} />
     <title>{title}</title>
+    <script is:inline src="/themeToggle.js"></script>
   </head>
-  <body>
+  <body class="w-full p-1 bg-slate-300 dark:bg-gray-600">
     <Nav client:load />
     <slot />
     <!-- <Footer /> -->
   </body>
 </html>
 <style is:global>
-  :root {
-    /* --gotham: "Gotham", sans-serif; */
-    --gopher: "Gopher", sans-serif;
-    --league: "League Gothic", sans-serif;
-
-    --primary: 240, 80%, 61%; /*primary color*/
-    --cta: 357, 100%, 63%; /*all ctas*/
-    --text: 252, 25%, 23%; /*card bg*/
-    --dark: 252, 10%, 30%; /*dark bg*/
-    --light: 266, 100%, 99%; /*light bg*/
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root: {
-      --primary: 240, 80%, 61%;
-      --cta: 357, 100%, 63%;
-      --text: 253, 12%, 70%;
-      --dark: 252, 10%, 30%;
-      --light: 266, 100%, 99%;
-    }
-  }
-
   @font-face {
-        font-family: "Gotham";
-        src: url("/fonts/Gotham-Light.woff2") format("woff2");
-        font-display: swap;
-    }
+    font-family: "Gotham";
+    src: url("/fonts/Gotham-Light.woff2") format("woff2");
+    font-display: swap;
+  }
 
   @font-face {
     font-family: "Gopher";
@@ -70,37 +48,16 @@ import Footer from "../components/Footer.tsx";
     font-display: swap;
   }
 
-  /* @font-face {
-    font-family: "League Gothic";
-    src: url("/fonts/leaguegothic-regular-webfont.woff2") format("woff2");
-    font-display: swap;
-  } */
-
-  *,
-  *:before,
-  *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
   body {
-    /* width: 100vw; */
-    display: flex;
-    flex-direction: column;
-    text-rendering: optimizeLegibility;
+    /* text-rendering: optimizeLegibility;
     --webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    position: relative;
-    background-color: var(--bg);
+    position: relative; */
+    /* background-color: var(--bg); */
   }
 
   ul {
     list-style: none;
-  }
-
-  a{
-    text-decoration: none;
   }
 
   a {
@@ -112,6 +69,7 @@ import Footer from "../components/Footer.tsx";
   import gsap from "gsap";
 
   let previousScrollPosition = 0;
+
 
   const isScrollingDown = () => {
     const currentScrolledPosition = window.scrollY || window.pageYOffset;

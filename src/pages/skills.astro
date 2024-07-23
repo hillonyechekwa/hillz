@@ -3,52 +3,52 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Hill | Skills">
-  <main>
-    <header class="w-full h-3/4 p-5">
-      <h3 class="font-gopher text-3xl">Skills.</h3>
-      <p class="font-gotham text-md">
+  <main class="flex flex-col justify-center items-center p-5 lg:flex-row lg:justify-evenly lg:items-center lg:h-screen">
+    <header class="w-full h-3/4 p-5 lg:h-full lg:relative lg:w-max lg:max-w-2.5 lg:flex lg:flex-col lg:gap-3 lg:justify-center lg:items-center">
+      <h3 class="font-gopher text-3xl dark:text-gray-300">Skills.</h3>
+      <p class="font-gotham text-md text-gray-700 dark:text-gray-300 lg:w-min lg:min-w-80">
         Most times, I work with Typescript(React and Vue), Graphql and Rust. I
         take interest in using modern animation tools and technniques to to
         bring a more neu-natural and realistic user experience to software
         especially on the web. 
       </p>
     </header>
-      <section class="w-full h-auto flex flex-col justify-around items-center gap-y-8">
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+      <section class="w-full h-auto flex flex-col md:flex-row md:flex-wrap md:p-4 md:items-center md:justify-between lg:flex-col lg:h-56 lg:w-auto lg:overflow-x-auto lg:flex-nowrap lg:scroll-mx-5 lg:scroll-smooth text-gray-300 font-bold relative justify-around items-center gap-y-8">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/icons8-html.svg" alt="html" />
-          <h4 class="font-gotham font-bold text-lg">HTML</h4>
+          <h4 class="font-gopher font-bold text-lg">HTML</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/icons8-css.svg" alt="css" />
-          <h4 class="font-gotham font-bold text-lg">CSS</h4>
+          <h4 class="font-gopher font-bold text-lg">CSS</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/js.png" alt="javascript" />
-          <h4 class="font-gotham font-bold text-lg">JavaScript</h4>
+          <h4 class="font-gopher font-bold text-lg">JavaScript</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/icons8-typescript.svg" alt="typescript" />
-          <h4 class="font-gotham font-bold text-lg">TypeScript</h4>
+          <h4 class="font-gopher font-bold text-lg">TypeScript</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/icons8-sass.svg" alt="sass" />
-          <h4 class="font-gotham font-bold text-lg">Sass</h4>
+          <h4 class="font-gopher font-bold text-lg">Sass</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/icons8-git.svg" alt="git" />
-          <h4 class="font-gotham font-bold text-lg">Git</h4>
+          <h4 class="font-gopher font-bold text-lg">Git</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/react.png" alt="react" />
-          <h4 class="font-gotham font-bold text-lg">React</h4>
+          <h4 class="font-gopher font-bold text-lg">React</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/node-js-logo.png" alt="node" />
-          <h4 class="font-gotham font-bold text-lg">Node</h4>
+          <h4 class="font-gopher font-bold text-lg">Node</h4>
         </div>
-        <div class="p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 border border-black">
+        <div class="lg:relative p-2 flex jusify-between items-center gap-x-6 rounded-md w-56 dark:bg-blue/40 bg-blue border border-black">
           <img class="w-12" src="/images/gql.png" alt="graphql" />
-          <h4 class="font-gotham font-bold text-lg">Graphql</h4>
+          <h4 class="font-gopher font-bold text-lg">Graphql</h4>
         </div>
     </section>
   </main>

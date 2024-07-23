@@ -3,52 +3,57 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Hill | Contact">
-    <main class="contacts-wrapper">
-        <header class="p-2 h-screen flex flex-col justify-around items-center">
-            <h3 class="font-gotham text-md text-center">
-                If you have any interesting projects you'd like me to be a part
-                of, or just want to talk shop and share Ideas, contact me. I
-                love getting involved in open source projects too.
-            </h3>
-            <img class="w-60" src="/illustrations/staringbeaniehill.svg" alt="" />
-        </header>
-        <section class="">
-            <section class="">
-                <form name="contact">
-                    <div class="">
-                        <input
-                            type="text"
-                            name="name"
-                            id="first-name"
-                            placeholder=""
-                        />
-                        <label for="name"> Name </label>
-                    </div>
-                    <div class="">
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder=""
-                        />
-                        <label for="email"> Email </label>
-                    </div>
-                    <div class="">
-                        <textarea
-                            name="message"
-                            id="message"
-                            cols="60"
-                            rows="10"
-                            placeholder=""></textarea>
-                        <label for="message"> Message </label>
-                    </div>
-                    <button type="submit">Let's Connect</button>
-                </form>
-            </section>
-
-            <h3>Let's do cool stuff together!</h3>
-        </section>
-    </main>
-
-   
+  <main class="contacts-wrapper">
+    <header
+      class="p-2 h-screen flex flex-col justify-evenly gap-y-10 items-center lg:flex-row"
+    >
+      <div class="flex flex-col justify-evenly items-center gap-y-5">
+        <img
+          class="w-60 lg:w-80 relative"
+          src="/illustrations/staringbeaniehill.svg"
+          alt="Ilustration of Hill"
+        />
+        <p class="lg:w-96 leading-6 font-gopher text-sm md:text-lg lg:text-2xl dark:text-gray-300 text-gray-700">
+          Want to hire me for a job or have an interesting project idea to work
+          on? send a message, if not I'm always open to making new developer friends. Let's do
+          great work together.
+        </p>
+      </div>
+      <section
+        class="flex flex-row justify-center items-center bg-blue dark:bg-gray-800 dark:text-gray-300 text-gray-300 p-3 shadow-lg shadow-gray-700 rounded-md "
+      >
+        <form name="contact" class="flex flex-col justify-evenly items-center gap-y-8">
+          <div class="flex flex-col justify-evenly items-start gap-x-5 p-2">
+            <label for="name" class="font-gopher text-lg"> Name: </label>
+            <input 
+              class="dark:bg-gray-700 dark:text-gray-300 text-gray-700 border-solid rounded-md border-2 border-gray-700 md:w-52 lg:w-80 w-44 form-input focus:border-gray-900 focus:text-sm focus:font-gopher"
+              type="text"
+              name="name"
+              id="first-name"
+              placeholder=""
+            />
+          </div>
+          <div class="flex flex-col justify-evenly items-start gap-x-5 w-auto p-2">
+            <label for="email" class="font-gopher text-lg"> Email: </label>
+            <input
+              class="dark:bg-gray-700 dark:text-gray-300 text-gray-700 border-solid rounded-md border-2 border-gray-700 md:w-52 lg:w-80 w-44 form-input focus:border-gray-900 focus:text-sm focus:font-gopher"
+              type="email"
+              name="email" 
+              id="email"
+              placeholder=""
+            />
+          </div>
+          <div class=" flex flex-col w-auto justify-evenly items-start gap-x-3 p-2">
+            <label for="message" class="font-gopher text-lg"> Message: </label>
+            <textarea
+              class="dark:bg-gray-700 dark:text-gray-300 text-gray-700 border-gray-700 lg:w-80 md:w-52 w-44 h-32 rounded-md border-2 form-text-area focus:border-gray-900 focus:text-sm focus:font-gopher"
+              name="message"
+              id="message"
+              placeholder=""></textarea>
+          </div>
+          <button type="submit">Connect With me!</button>
+        </form>
+      </section>
+    </header>
+  </main>
 </Layout>

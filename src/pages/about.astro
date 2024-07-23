@@ -5,28 +5,28 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Hill | About">
   <main class="w-full">
     <header
-      class="w-full h-screen flex flex-col justify-evenly items-center"
+      class="w-full h-screen flex flex-col justify-evenly items-center lg:flex-row dark:bg-blue/50"
       data-depth="0.1"
     >
-      <h1 class="font-gopher text-5xl flex flex-col">
+      <h1 class="text-blue dark:text-gray-100 font-gopher text-5xl flex flex-col md:text-7xl lg:text-8xl text-text">
         <span>Hill</span>
         <span> Onyechekwa</span>
       </h1>
       <img
-        class="rounded-md w-56"
+        class="shadow-lg shadow-slate-500 dark:shadow-gray-900 rounded-md w-56 md:w-72 lg:w-80"
         src="/images/hillz1.jpg"
         alt="a photo of hill"
       />
     </header>
     <main class="w-full">
       <section class="w-full h-screen p-2 flex flex-col space-between items-center">
-        <h3 class="font-gopher capitalize text-3xl mx-auto">
+        <h3 class="text-gray-700 dark:text-gray-300 font-gopher capitalize text-3xl md:text-4xl lg:text-5xl mx-auto">
           a little about me.
         </h3>
         <section
-          class="w-full h-3/4 relative flex flex-col justify-evenly items-center gap-8 font-gotham"
+          class="text-gray-700 dark:text-gray-300 w-full h-3/4 relative flex flex-col justify-evenly items-center gap-8 md:px-10 font-gotham"
         >
-          <p>
+          <p class="md:text-lg lg:text-xl">
             I'm a <strong>Frontend Developer</strong> with a strong background in
             creating building <strong
               >aesthetically appealing and user-friendly web experiences
@@ -36,13 +36,13 @@ import Layout from "../layouts/Layout.astro";
             >. I am eager to leverage my expertise and experience as a valuable
             addition to a dynamic team, helping the compay acheive its goals.
           </p>
-          <p>
+          <p class="md:text-lg lg:text-xl">
             I have a keen interest in embedded systems and robotics software
             development. I'm learning new things everyday to gain more insight
             and experience about that ecosystem. I'm currently learning the rust
             programming language.
           </p>
-          <p>
+          <p class="md:text-lg lg:text-xl">
             When I'm not building more things into the simulation of our
             existing space-time continum, I spend tiime in my home city in
             Lagos, Nigeria with family and friends.
@@ -52,7 +52,6 @@ import Layout from "../layouts/Layout.astro";
      
     </main>
   </main>
-</Layout>
 
 <script>
   import { gsap } from "gsap";
@@ -138,3 +137,4 @@ import Layout from "../layouts/Layout.astro";
     });
   });
 </script>
+</Layout>
