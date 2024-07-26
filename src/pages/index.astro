@@ -1,11 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "@components/Button.tsx";
-import { getCollection } from "astro:content";
-import ProjectList from "../components/ProjectList.astro";
-const projects = await getCollection("projects");
-import PostList from "../components/PostList.astro";
-const posts = await getCollection("posts");
+
+import Project from "@/components/Project.astro";
+import Post from "@/components/Post.astro";
+
+const postData = await Astro.glob("../content/posts/*.md")
+const projectData = await Astro.glob("../content/projects/*.md")
+
 ---
 
 <Layout title="Hill | Home">
@@ -41,14 +43,14 @@ const posts = await getCollection("posts");
           real problems that affect me and my environment.
         </p>
 
-        <!-- <Button
-                    btnType="primary"
+        <Button
+                    classStyles="relative mx-auto"
                     content="See My Projects"
-                    url="./projects"
-                /> -->
+                    url="/projects"
+                />
 
         <h1
-          class="text-blue dark:text-gray-200 relative top-8 flex flex-col font-gopher text-5xl md:text-7xl lg:text-9xl md:font-extrabold mx-auto md:absolute md:top-3/4 md:right-44 lg:top-0 lg:z-0 lg:relative lg:opacity-15 dark:lg:opacity-100"
+          class="text-blue dark:text-gray-200 relative top-8 flex flex-col font-gopher text-5xl md:text-7xl lg:text-9xl md:font-extrabold mx-auto md:absolute md:top-3/4 md:right-44 lg:-left-80 lg:top-0 lg:z-0 lg:relative lg:opacity-15 dark:lg:opacity-100"
         >
           <span class="self-center lg:tracking-wide">Hillary</span>
           <span class="lg:tracking-wide">Onyechekwa</span>
@@ -62,8 +64,16 @@ const posts = await getCollection("posts");
         <div class="w-full flex flex-row justify-center lg:justify-start items-center pl-3">
           <h2 class="font-gopher text-3xl text-gray-200 dark:text-gray-300 md:text-5xl">Projects.</h2>
         </div>
-        <section class="w-full grid place-items-center relative">
-          <ProjectList projects={projects} />
+        <section class="w-full grid place-items-center gap-y-5 lg:grid lg:grid-cols-2 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-4 lg:gap-8 relative">
+          <!-- <ProjectList projects={projects} /> -->
+           {
+            projectData.slice(0, 4).map((project) => (
+              <Project
+              frontmatter={project.frontmatter}
+              tagType="h2"
+              />
+            ))
+           }
         </section>
       </section>
       <section
@@ -73,9 +83,16 @@ const posts = await getCollection("posts");
           <h2 class="font-gopher dark:text-gray-300 text-3xl md:text-5xl">Articles.</h2>
         </div>
         <section
-          class="w-full flex flex-row justify-center items-center relative"
+          class="w-full flex flex-col justify-center items-center gap-y-5 lg:grid lg:grid-cols-3 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-8 lg:gap-x-8 relative"
         >
-          <PostList posts={posts} />
+            {postData.slice(0, 3).map((post) => (
+                <Post 
+                frontmatter={post.frontmatter}
+                url={post.url}
+                tagType="h2"
+                />
+              ))
+            }
         </section>
       </section>
     </main>

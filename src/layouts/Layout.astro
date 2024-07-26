@@ -27,7 +27,7 @@ import Footer from "../components/Footer.tsx";
     <meta name="generator" content={Astro.generator} />
     <meta title={title} />
     <title>{title}</title>
-    <script is:inline src="/themeToggle.js"></script>
+    <script is:inline src="/scripts/themeToggle.js"></script>
   </head>
   <body class="w-full p-1 bg-slate-300 dark:bg-gray-600">
     <Nav client:load />
@@ -66,51 +66,51 @@ import Footer from "../components/Footer.tsx";
 </style>
 
 <script>
-  import gsap from "gsap";
+  // import gsap from "gsap";
 
-  let previousScrollPosition = 0;
+  // let previousScrollPosition = 0;
 
 
-  const isScrollingDown = () => {
-    const currentScrolledPosition = window.scrollY || window.pageYOffset;
-    let scrollingDown;
+  // const isScrollingDown = () => {
+  //   const currentScrolledPosition = window.scrollY || window.pageYOffset;
+  //   let scrollingDown;
 
-    currentScrolledPosition > previousScrollPosition
-      ? (scrollingDown = true)
-      : (scrollingDown = false);
+  //   currentScrolledPosition > previousScrollPosition
+  //     ? (scrollingDown = true)
+  //     : (scrollingDown = false);
 
-    previousScrollPosition = currentScrolledPosition;
+  //   previousScrollPosition = currentScrolledPosition;
 
-    return scrollingDown;
-  };
+  //   return scrollingDown;
+  // };
 
-  const handleNavScroll = () => {
-    const nav = document.querySelector(".navigation");
+  // const handleNavScroll = () => {
+  //   const nav = document.querySelector(".navigation");
 
-    if (isScrollingDown()) {
-      nav.classList.add("scroll-down");
-      nav.classList.remove("scroll-up");
-    } else {
-      nav.classList.add("scroll-up");
-      nav.classList.remove("scroll-down");
-    }
-  };
+  //   if (isScrollingDown()) {
+  //     nav.classList.add("scroll-down");
+  //     nav.classList.remove("scroll-up");
+  //   } else {
+  //     nav.classList.add("scroll-up");
+  //     nav.classList.remove("scroll-down");
+  //   }
+  // };
 
-  let throttleWait;
+  // let throttleWait;
 
-  const throttle = (callback, time) => {
-    if (throttleWait) return;
+  // const throttle = (callback, time) => {
+  //   if (throttleWait) return;
 
-    throttleWait = true;
+  //   throttleWait = true;
 
-    setTimeout(() => {
-      callback();
+  //   setTimeout(() => {
+  //     callback();
 
-      throttleWait = false;
-    }, time);
-  };
+  //     throttleWait = false;
+  //   }, time);
+  // };
 
-  window.addEventListener("scroll", handleNavScroll);
+  // window.addEventListener("scroll", handleNavScroll);
 
   // page loader logic
 </script>

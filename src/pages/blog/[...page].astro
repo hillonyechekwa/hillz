@@ -1,0 +1,39 @@
+---
+import Pagination from "../../components/Pagination.astro";
+import Layout from "../../layouts/Layout.astro";
+// import { getCollection } from "astro:content";
+// import PostList from "../components/PostList.astro";
+// const posts = await getCollection("posts");
+
+import Post from "@/components/Post.astro";
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob("../../content/posts/*.md");
+  return paginate(allPosts, {
+    pageSize: 6,
+  });
+}
+
+const { page } = Astro.props;
+// console.log('page',page);
+---
+
+<Layout title="Hill | Blog">
+  <main class="p-3">
+    <header class="p-2">
+      <h2 class="font-gopher text-4xl dark:text-gray-200">Blog.</h2>
+    </header>
+
+    <main class="w-full flex flex-col gap-5 lg:grid lg:grid-cols-3 lg:grid-rows-2 lg:gap-8 md:gap-5 justify-center items-center md:p-8">
+      <!-- <PostList posts={posts} /> -->
+      {page.data.map((post) => (
+        <Post
+          frontmatter={post.frontmatter}
+          url={post.url}
+          tagType="h2"
+          />
+      ))}
+    </main>
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </main>
+</Layout>

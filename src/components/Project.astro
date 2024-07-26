@@ -2,29 +2,28 @@
 import { getEntryBySlug, type CollectionEntry } from "astro:content";
 import {Image} from "astro:assets"
 
+const {frontmatter, tagType} = Astro.props
 
-type Props = {
-    project: CollectionEntry<"projects">
-}
+const Tag = tagType
 
-const {project} = Astro.props
+const {title, summary, image, tech, siteUrl, repoUrl} = frontmatter
 ---
 
 
 <article class="bg-gray-900 dark:bg-blue/50 text-gray-100 shadow-lg shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-80 md:w-auto p-2 md:p-4 rounded-md">
     <div class="flex flex-col items-center justify-between md:justify-around w-full flex-wrap gap-y-4" >
         <Image 
-        src={`${project.data.image}`} 
+        src={image} 
         width="300"
         height="70"
-        alt={`${project.data.title}`}
+        alt={title}
         quality="80"
         loading="lazy"
         class="rounded-md"
         />
-        <h2 class="font-gopher text-lg">{project.data.title}</h2>
-        <p class="post-summary line-clamp-1 hover:line-clamp-none w-44">{project.data.summary}</p>
-        <ul class="w -full p-2 flex gap-x-4 flex-wrap">{project.data.tech.map( t => {
+        <h2 class="font-gopher text-lg">{title}</h2>
+        <p class="post-summary w-min min-w-44">{summary}</p>
+        <ul class="w -full p-2 flex gap-x-4 flex-wrap">{tech.map( t => {
             return(
                 <li class="text-blue dark:text-gray-200 font-gopher text-sm">
                     {t}
@@ -32,8 +31,8 @@ const {project} = Astro.props
             )
         })}</ul>
         <ul class="w-full flex flex-row justify-evenly items-center p-2 font-gopher">
-            <li><a class="text-red/50 hover:text-red/80" href={`${project.data.siteUrl}`}>site</a></li>
-            <li><a class="text-red/50 hover:text-red/80" href={`${project.data.repoUrl}`}>github</a></li>
+            <li><a class="text-red/50 hover:text-red/80" href={siteUrl}>site</a></li>
+            <li><a class="text-red/50 hover:text-red/80" href={repoUrl}>github</a></li>
         </ul>
     </div>
 </article>

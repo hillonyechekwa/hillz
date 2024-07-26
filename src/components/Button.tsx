@@ -1,22 +1,15 @@
-import Style from "./button.module.css"
 
 
-function Button ({btnType, content, url}){
+const Button  = ({ content, url, classStyles }) => {
+
+
     return(
-        <>
-            {btnType === "primary" && (
-                <button className={Style.primaryCta}
-                 >
-                <a href={url}>{content}</a>
-             </button>
-            )}
-
-            {btnType === "accent" && (
-                <button className={Style.accentCta}>
-                    <a href={url}>{content}</a>
-                </button>
-            )}
-        </>
+        <a
+            role="button"
+            href={url}
+            className={`bg-red w-40 p-3 md:w-52 lg:w-64 rounded-full shadow-lg shadow-stone-800 hover:shadow-none font-gopher grid place-items-center transition-shadow ease-out duration-100 ${classStyles}`}>
+            {content}
+        </a>
     )
 }
 
