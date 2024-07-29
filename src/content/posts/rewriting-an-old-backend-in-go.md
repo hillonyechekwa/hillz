@@ -5,4 +5,7 @@ tags:
     - golang
     - backend
     - devjournal
+pubDate: 2024-07-21
+relatedPosts:
+    - building-a-compiler-in-rust
 ---

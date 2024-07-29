@@ -122,6 +122,7 @@ const Nav = () => {
                         <li><a href="/projects">Projects</a></li>
                         <li><a href="/skills">Skills</a></li>
                         <li><a href="/blog">Blog</a></li>
+                        <li><a href="/tags/">Tags</a></li>
                         <li><a href="/contact">Contact</a></li>
                         <li>
                             <button className="w-12 p-3" onClick={handleThemeToggle} role="switch" aria-label="light/dark mode">

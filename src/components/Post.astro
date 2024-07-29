@@ -1,32 +1,24 @@
 ---
 import { getEntryBySlug, type CollectionEntry } from "astro:content";
 
-// type Props = {
-//   post: CollectionEntry<"posts">;
-// };
+type Props = {
+  post: CollectionEntry<"posts">;
+};
 
-// const { post } = Astro.props;
-const {frontmatter, url, tagType} = Astro.props;
+const { post } = Astro.props;
+const {slug} = post
+const {title, summary, tags} = post.data
+// const {frontmatter, tagType} = Astro.props;
 
-const Tag = tagType
+// const Tag = tagType
 
-const {title, summary, tags} = frontmatter
+// const {title, summary, slug, tags} = frontmatter
 
 ---
 
-<article
-  class="bg-gray-700 dark:bg-blue/70 border border-x-2 border-y-2  border-black dark:border-gray-800 text-gray-100 shadow-lg shadow-gray-500 dark:shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-80 h-60 md:w-auto p-3 md:p-4 rounded-md"
-
->
-  <!-- <a
-    class="flex flex-col items-center justify-between gap-y-8 md:justify-around w-full flex-wrap "
-    href={`/posts/${post.slug}`}
-  > -->
-  <a
-    class="flex flex-col items-center justify-between gap-y-8 md:justify-around w-full flex-wrap "
-    href={url}
-  >
-    <Tag class=" font-gopher text-lg w-min min-w-52">{title}</Tag>
+<article class="bg-gray-700 dark:bg-blue/70 border border-x-2 border-y-2  border-black dark:border-gray-800 text-gray-100 shadow-lg shadow-gray-500 dark:shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-80 h-60 lg:w-96 p-3 md:p-4 rounded-md">
+  <a href={`posts/${slug}`} class="flex flex-col items-center justify-between gap-y-8 md:justify-around w-full flex-wrap">
+    <h2 class=" font-gopher text-lg w-min min-w-52">{title}</h2>
     <p class="text-wrap w-min min-w-60 text-sm">{summary}</p>
     <ul class="w-auto flex items-center justify-between gap-x-5">
       {

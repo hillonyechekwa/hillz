@@ -1,19 +1,41 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Button from "@components/Button.tsx";
-
+import { getCollection, type CollectionEntry } from "astro:content";
 import Project from "@/components/Project.astro";
 import Post from "@/components/Post.astro";
 
-const postData = await Astro.glob("../content/posts/*.md")
-const projectData = await Astro.glob("../content/projects/*.md")
+// const postData = await Astro.glob("../content/posts/*.md");
+const postData = await getCollection("posts");
+const projectData = await Astro.glob("../content/projects/*.md");
 
+const anim = {
+    old: {
+      name: "fadeIn",
+      delay: "1.5s",
+      duration: "1.5s",
+      easing: "easeOut",
+      fillMode: "forwards",
+    },
+  new: {
+    name: "fadeOut",
+    delay: "1.5s",
+    duration: "1.5s",
+    easing: "easeIn",
+    fillMode: "backwards",
+  },
+};
+
+const mySlide = {
+  forwards: anim,
+  backwards: anim,
+};
 ---
 
 <Layout title="Hill | Home">
-  <main class="w-full">
+  <main class="w-full grow">
     <header
-    class=" dark:bg-blue/40 w-full h-screen p-2 flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 md:items-center justify-evenly items-start md:relative"
+      class="dark:bg-blue/40 w-full h-screen p-2 flex flex-col md:grid md:grid-cols-2 md:grid-rows-1 md:items-center justify-evenly items-start md:relative"
     >
       <article
         class="w-full flex flex-col md:justify-center md:pl-3 lg:pl-6 md:gap-y-20 md:w-full md:h-fit md:relative md:bottom-32"
@@ -23,7 +45,9 @@ const projectData = await Astro.glob("../content/projects/*.md")
         >
           <span class="">Web</span>
           <span class="">Engineer</span>
-          <small class="text-gray-600 dark:text-gray-200 dark:text-text font-gotham text-sm md:text-lg">
+          <small
+            class="text-gray-600 dark:text-gray-200 dark:text-text font-gotham text-sm md:text-lg"
+          >
             <span>Typescript</span>
             <span>Rust</span>
             <span>GraphQl</span>
@@ -37,17 +61,19 @@ const projectData = await Astro.glob("../content/projects/*.md")
         </h3>
       </article>
       <article class="flex flex-col gap-10">
-        <p class="text-gray-600 dark:text-gray-200 font-gotham font-bold md:line-clamp-4 lg:p-20">
+        <p
+          class="text-gray-600 dark:text-gray-200 font-gotham font-bold md:line-clamp-4 lg:p-20"
+        >
           I have an invested interest in the multi-faceted parts of software
           engineering and computer programming and implementing them to solve
           real problems that affect me and my environment.
         </p>
 
         <Button
-                    classStyles="relative mx-auto"
-                    content="See My Projects"
-                    url="/projects"
-                />
+          classStyles="relative mx-auto"
+          content="See My works"
+          url="/projects"
+        />
 
         <h1
           class="text-blue dark:text-gray-200 relative top-8 flex flex-col font-gopher text-5xl md:text-7xl lg:text-9xl md:font-extrabold mx-auto md:absolute md:top-3/4 md:right-44 lg:-left-80 lg:top-0 lg:z-0 lg:relative lg:opacity-15 dark:lg:opacity-100"
@@ -61,60 +87,73 @@ const projectData = await Astro.glob("../content/projects/*.md")
       <section
         class="py-8 bg-blue dark:bg-transparent w-full h-auto flex flex-col jusify-evenly items-center gap-y-3"
       >
-        <div class="w-full flex flex-row justify-center lg:justify-start items-center pl-3">
-          <h2 class="font-gopher text-3xl text-gray-200 dark:text-gray-300 md:text-5xl">Projects.</h2>
-        </div>
-        <section class="w-full grid place-items-center gap-y-5 lg:grid lg:grid-cols-2 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-4 lg:gap-8 relative">
-          <!-- <ProjectList projects={projects} /> -->
-           {
-            projectData.slice(0, 4).map((project) => (
-              <Project
-              frontmatter={project.frontmatter}
-              tagType="h2"
-              />
-            ))
-           }
-        </section>
-      </section>
-      <section
-        class=" w-full p-2 flex flex-col justify-evenly items-center gap-y-3"
-      >
-        <div>
-          <h2 class="font-gopher dark:text-gray-300 text-3xl md:text-5xl">Articles.</h2>
+        <div
+          class="w-full flex flex-row justify-center lg:justify-start items-center pl-3"
+        >
+          <h2
+            class="font-gopher text-3xl text-gray-200 dark:text-gray-300 md:text-5xl"
+          >
+            Projects.
+          </h2>
         </div>
         <section
-          class="w-full flex flex-col justify-center items-center gap-y-5 lg:grid lg:grid-cols-3 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-8 lg:gap-x-8 relative"
+          class="w-full grid place-items-center gap-y-5 lg:grid lg:grid-cols-2 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-4 lg:gap-8 relative"
         >
-            {postData.slice(0, 3).map((post) => (
-                <Post 
-                frontmatter={post.frontmatter}
-                url={post.url}
-                tagType="h2"
-                />
+          <!-- <ProjectList projects={projects} /> -->
+          {
+            projectData
+              .slice(0, 4)
+              .map((project) => (
+                <Project frontmatter={project.frontmatter} tagType="h2" />
               ))
-            }
+          }
         </section>
+        <Button
+          classStyles="relative mt-5"
+          content="See All Projects"
+          url="/projects"
+        />
+      </section>
+      <section
+        class="w-full p-2 flex flex-col justify-evenly items-center gap-y-3"
+      >
+        <div>
+          <h2 class="font-gopher dark:text-gray-300 text-3xl md:text-5xl">
+            Articles.
+          </h2>
+        </div>
+        <section
+          class="w-full flex flex-col justify-center items-center p-5 gap-y-5 lg:grid lg:grid-cols-2 xl:grid-cols-3 lg:justify-evenly lg:items-center md:grid md:grid-cols-2 md:gap-8 lg:gap-x-8 relative"
+        >
+          {postData.slice(0, 3).map((post) => <Post post={post} />)}
+        </section>
+
+        <Button
+          classStyles="relative mt-5 mb-8"
+          content="See More Posts"
+          url="/blog"
+        />
       </section>
     </main>
   </main>
   <script>
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/all";
-    import Lenis from "lenis";
-    //TODO: refactor this animation code to work in different media queries.
-    gsap.registerPlugin(ScrollTrigger);
+    // import { gsap } from "gsap";
+    // import { ScrollTrigger } from "gsap/all";
+    // import Lenis from "lenis";
+    // //TODO: refactor this animation code to work in different media queries.
+    // gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline();
+    // const tl = gsap.timeline();
 
-    const lenis = new Lenis();
+    // const lenis = new Lenis();
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+    // function raf(time) {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // }
 
-    requestAnimationFrame(raf);
+    // requestAnimationFrame(raf);
 
-    let mm = gsap.matchMedia();
+    // let mm = gsap.matchMedia();
   </script>
 </Layout>

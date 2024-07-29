@@ -2,7 +2,9 @@
 import { getEntryBySlug, type CollectionEntry } from "astro:content";
 import {Image} from "astro:assets"
 
-const {frontmatter, tagType} = Astro.props
+const {frontmatter, url, tagType} = Astro.props
+
+// console.log(url)
 
 const Tag = tagType
 
@@ -10,7 +12,7 @@ const {title, summary, image, tech, siteUrl, repoUrl} = frontmatter
 ---
 
 
-<article class="bg-gray-900 dark:bg-blue/50 text-gray-100 shadow-lg shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-80 md:w-auto p-2 md:p-4 rounded-md">
+<article class="bg-gray-900 dark:bg-blue/50 text-gray-100 shadow-lg shadow-gray-700 flex flex-col justify-evenly gap-8 items-center w-60 md:w-80 lg:w-auto p-2 md:p-4 rounded-md">
     <div class="flex flex-col items-center justify-between md:justify-around w-full flex-wrap gap-y-4" >
         <Image 
         src={image} 

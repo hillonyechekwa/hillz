@@ -5,4 +5,7 @@ tags:
     - frontend
     - web
     - devjournal
+pubDate: 2024-07-24
+relatedPosts: 
+    - how-important-it-is-to-have-web5
 ---

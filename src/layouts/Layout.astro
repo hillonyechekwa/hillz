@@ -5,12 +5,14 @@ interface Props {
 
 const { title } = Astro.props;
 // import "../styles/variables.css"
+import { ViewTransitions } from "astro:transitions";
+import Loading from "@/components/Loading.astro";
 import Nav from "../components/Nav.jsx";
 import Footer from "../components/Footer.tsx";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -27,90 +29,56 @@ import Footer from "../components/Footer.tsx";
     <meta name="generator" content={Astro.generator} />
     <meta title={title} />
     <title>{title}</title>
+    <ViewTransitions />
     <script is:inline src="/scripts/themeToggle.js"></script>
+    <script src="../scripts/pageTransition"></script>
+    <script src="../scripts/loading"></script>
   </head>
-  <body class="w-full p-1 bg-slate-300 dark:bg-gray-600">
-    <Nav client:load />
-    <slot />
-    <!-- <Footer /> -->
-  </body>
-</html>
-<style is:global>
-  @font-face {
-    font-family: "Gotham";
-    src: url("/fonts/Gotham-Light.woff2") format("woff2");
-    font-display: swap;
-  }
+  <body class="overflow-x-hidden">
+    <Loading />
+    <main
+      class="relative z-10 w-full p-1 bg-slate-300 dark:bg-gray-600 flex flex-col h-min min-h-screen"
+      id="page-content"
+    >
+      <Nav client:load />
+      <slot />
+      <Footer />
+    </main>
+    <main id="transition-overlay" class="grid place-items-center fixed top-0 left-0 w-full h-full bg-blue dark:bg-gray-800 z-50 scale-y-0 origin-top ">
+      <img src="/illustrations/staringbeaniehill.svg" alt="hillz" class="w-20" />
+    </main>
+    <style is:global>
+      @font-face {
+        font-family: "Gotham";
+        src: url("/fonts/Gotham-Light.woff2") format("woff2");
+        font-display: swap;
+      }
 
-  @font-face {
-    font-family: "Gopher";
-    src: url("/fonts/GopherText-Bold.woff2") format("woff2");
-    font-display: swap;
-  }
+      @font-face {
+        font-family: "Gopher";
+        src: url("/fonts/GopherText-Bold.woff2") format("woff2");
+        font-display: swap;
+      }
 
-  body {
-    /* text-rendering: optimizeLegibility;
+      body {
+        /* text-rendering: optimizeLegibility;
     --webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative; */
-    /* background-color: var(--bg); */
-  }
+        /* background-color: var(--bg); */
+      }
 
-  ul {
-    list-style: none;
-  }
+      ul {
+        list-style: none;
+      }
 
-  a {
-    text-decoration: none;
-  }
-</style>
+      a {
+        text-decoration: none;
+      }
+    </style>
 
-<script>
-  // import gsap from "gsap";
-
-  // let previousScrollPosition = 0;
-
-
-  // const isScrollingDown = () => {
-  //   const currentScrolledPosition = window.scrollY || window.pageYOffset;
-  //   let scrollingDown;
-
-  //   currentScrolledPosition > previousScrollPosition
-  //     ? (scrollingDown = true)
-  //     : (scrollingDown = false);
-
-  //   previousScrollPosition = currentScrolledPosition;
-
-  //   return scrollingDown;
-  // };
-
-  // const handleNavScroll = () => {
-  //   const nav = document.querySelector(".navigation");
-
-  //   if (isScrollingDown()) {
-  //     nav.classList.add("scroll-down");
-  //     nav.classList.remove("scroll-up");
-  //   } else {
-  //     nav.classList.add("scroll-up");
-  //     nav.classList.remove("scroll-down");
-  //   }
-  // };
-
-  // let throttleWait;
-
-  // const throttle = (callback, time) => {
-  //   if (throttleWait) return;
-
-  //   throttleWait = true;
-
-  //   setTimeout(() => {
-  //     callback();
-
-  //     throttleWait = false;
-  //   }, time);
-  // };
-
-  // window.addEventListener("scroll", handleNavScroll);
-
-  // page loader logic
-</script>
+    <script>
+      
+    </script>
+  </body>
+</html>

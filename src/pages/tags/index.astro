@@ -8,10 +8,10 @@ const pageTitle = 'Tag Index';
 ---
 
 <Layout title={pageTitle}>
-    <section class="">
+    <section class="grow grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-evenly items-center text-xl lg:text-2xl font-gopher text-gray-700 dark:text-gray-300 p-3">
         {
             tags.map((tag) => (
-                <p>
+                <p class="justify-self-center">
                     <a href={`/tags/${tag}`}>{tag}</a>
                 </p>
             ))

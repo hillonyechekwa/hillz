@@ -1,9 +1,33 @@
 ---
+import { animate } from "framer-motion";
 import Layout from "../layouts/Layout.astro";
+import { slide } from "astro:transitions";
+
+const anim = {
+    old: {
+      name: 'fadeIn',
+      delay: "1.5s",
+      duration: '1.5s',
+      easing: 'easeOut',
+      fillMode: 'forwards'
+    },
+  new: {
+    name: 'fadeOut',
+    delay: "1.5s",
+    duration: '1.5s',
+    easing: 'easeIn',
+    fillMode: 'backwards'
+  }
+}
+
+const mySlide = {
+  forwards: anim,
+  backwards: anim
+}
 ---
 
 <Layout title="Hill | About">
-  <main class="w-full">
+  <main class="w-full grow" >
     <header
       class="w-full h-screen flex flex-col justify-evenly items-center lg:flex-row dark:bg-blue/50"
       data-depth="0.1"
@@ -54,87 +78,87 @@ import Layout from "../layouts/Layout.astro";
   </main>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/all";
-  import Lenis from "lenis";
+  // import { gsap } from "gsap";
+  // import { ScrollTrigger } from "gsap/all";
+  // import Lenis from "lenis";
 
-  gsap.registerPlugin(ScrollTrigger);
+  // gsap.registerPlugin(ScrollTrigger);
 
-  const lenis = new Lenis();
+  // const lenis = new Lenis();
 
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
 
-  requestAnimationFrame(raf);
+  // requestAnimationFrame(raf);
 
-  let mm = gsap.matchMedia();
+  // let mm = gsap.matchMedia();
 
-  mm.add("(min-width: 800px)", () => {
-    const aboutHero = document.querySelector("#about-hero");
-    const aboutContent = document.querySelector("#about-content");
-    const skills = document.querySelector("#skills");
+  // mm.add("(min-width: 800px)", () => {
+  //   const aboutHero = document.querySelector("#about-hero");
+  //   const aboutContent = document.querySelector("#about-content");
+  //   const skills = document.querySelector("#skills");
 
-    // about hero styles
-    const tl = gsap.timeline();
+  //   // about hero styles
+  //   const tl = gsap.timeline();
 
-    gsap.utils.toArray("#about-hero > h1 > span").forEach((span, index) => {
-      gsap.to(span, {
-        y: index === 0 ? -30 : 30,
-        x: index === 0 ? -100 : 100,
-        opacity: 0,
-        ease: "power2.inOut",
-        stagger: 0.1,
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: aboutHero,
-          start: "3px left",
-          end: "center",
-          scrub: true,
-        },
-      });
-    });
+  //   gsap.utils.toArray("#about-hero > h1 > span").forEach((span, index) => {
+  //     gsap.to(span, {
+  //       y: index === 0 ? -30 : 30,
+  //       x: index === 0 ? -100 : 100,
+  //       opacity: 0,
+  //       ease: "power2.inOut",
+  //       stagger: 0.1,
+  //       delay: 0.3,
+  //       scrollTrigger: {
+  //         trigger: aboutHero,
+  //         start: "3px left",
+  //         end: "center",
+  //         scrub: true,
+  //       },
+  //     });
+  //   });
 
-    gsap.utils.toArray(".about-images").forEach((image, index) => {
-      // console.log(image)
-      gsap.to(image, {
-        x: index === 0 ? -80 : 80,
-        opacity: 0,
-        ease: "power2.inOut",
-        stagger: 0.1,
-        delay: 0.3,
-        scrollTrigger: {
-          trigger: aboutHero,
-          start: "5% left",
-          end: "center",
-          scrub: true,
-        },
-      });
-    });
+  //   gsap.utils.toArray(".about-images").forEach((image, index) => {
+  //     // console.log(image)
+  //     gsap.to(image, {
+  //       x: index === 0 ? -80 : 80,
+  //       opacity: 0,
+  //       ease: "power2.inOut",
+  //       stagger: 0.1,
+  //       delay: 0.3,
+  //       scrollTrigger: {
+  //         trigger: aboutHero,
+  //         start: "5% left",
+  //         end: "center",
+  //         scrub: true,
+  //       },
+  //     });
+  //   });
 
-    gsap.utils.toArray(".about-sections p").forEach((sect, index) => {
-      gsap.fromTo(
-        sect,
-        {
-          x: -10,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          opacity: 1,
-          ease: "power2.inOut",
-          stagger: 0.1,
-          delay: 0.1,
-          scrollTrigger: {
-            trigger: aboutContent,
-            start: "top bottom-=50",
-            end: "bottom center",
-            scrub: true,
-          },
-        }
-      );
-    });
-  });
+  //   gsap.utils.toArray(".about-sections p").forEach((sect, index) => {
+  //     gsap.fromTo(
+  //       sect,
+  //       {
+  //         x: -10,
+  //         opacity: 0,
+  //       },
+  //       {
+  //         x: 0,
+  //         opacity: 1,
+  //         ease: "power2.inOut",
+  //         stagger: 0.1,
+  //         delay: 0.1,
+  //         scrollTrigger: {
+  //           trigger: aboutContent,
+  //           start: "top bottom-=50",
+  //           end: "bottom center",
+  //           scrub: true,
+  //         },
+  //       }
+  //     );
+  //   });
+  // });
 </script>
 </Layout>

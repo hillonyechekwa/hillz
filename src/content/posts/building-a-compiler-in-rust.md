@@ -5,6 +5,9 @@ tags:
     - rust
     - programming
     - devjournal
+pubDate: 2024-07-19
+relatedPosts: 
+ - rewriting-an-old-backend-in-go
 ---
 
 
